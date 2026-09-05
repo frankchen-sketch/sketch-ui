@@ -83,6 +83,7 @@ import { Logo } from "@/components/Logo";
 import { PartsPalette } from "@/components/PartsPalette";
 import { PromptPanel } from "@/components/PromptPanel";
 import { PresetSelector } from "@/components/PresetSelector";
+import { TemplatePanel } from "@/components/TemplatePanel";
 import type { ProjectPreset } from "@/lib/presets";
 import { paletteOfPreset, themeOfPreset, presetPromptContext, loadAllPresets } from "@/lib/presets";
 import { GitHubLink, Mode, Toolbar } from "@/components/Toolbar";
@@ -300,10 +301,11 @@ function ThinkingRing({ p, frame }: { p: Palette; frame: Frame }) {
   );
 }
 
-type LeftTab = "preset" | "parts" | "layers" | "color" | "shape" | "type" | "motion" | "ai";
-/** the left rail: project preset, parts and layers, then the four theme axes of the whole design */
-const LEFT_TABS: { key: LeftTab; icon: string; title: "preset" | "parts" | "layers" | "colors" | "shape" | "typography" | "motion" | "ai" }[] = [
+type LeftTab = "preset" | "templates" | "parts" | "layers" | "color" | "shape" | "type" | "motion" | "ai";
+/** the left rail: project preset, templates, parts and layers, then the four theme axes of the whole design */
+const LEFT_TABS: { key: LeftTab; icon: string; title: "preset" | "pageTemplates" | "parts" | "layers" | "colors" | "shape" | "typography" | "motion" | "ai" }[] = [
   { key: "preset", icon: "folder_special", title: "preset" },
+  { key: "templates", icon: "dashboard_customize", title: "pageTemplates" },
   { key: "parts", icon: "add_box", title: "parts" },
   { key: "layers", icon: "layers", title: "layers" },
   { key: "color", icon: "palette", title: "colors" },
@@ -2841,7 +2843,7 @@ export default function Page() {
               )}
               <div style={{ height: 6 }} />
               {LEFT_TABS.map((tab, i) => (
-                <div key={tab.key} style={{ marginTop: i === 3 || i === 7 ? 10 : 0 }}>
+                <div key={tab.key} style={{ marginTop: i === 4 || i === 8 ? 10 : 0 }}>
                   <IconBtn
                     icon={tab.icon}
                     p={p}
@@ -2895,6 +2897,23 @@ export default function Page() {
                       onSelect={handlePresetSelect}
                     />
                   </div>
+                ) : leftTab === "templates" ? (
+                  <TemplatePanel
+                    palette={p}
+                    activePresetKey={activePresetKey}
+                    onInsert={(tmplGroups) => {
+                      // Insert template groups below existing content
+                      const maxY = groups.reduce((m, g) => Math.max(m, g.y + 100), 0);
+                      const offsetGroups = tmplGroups.map((g, i) => ({
+                        ...g,
+                        id: uid(),
+                        y: maxY + 40 + i * 120,
+                        items: g.items.map((it) => ({ ...it, id: uid() })),
+                      }));
+                      setGroups((prev) => [...prev, ...offsetGroups]);
+                      setLeftTab("parts"); // switch to parts to show what was added
+                    }}
+                  />
                 ) : leftTab === "parts" ? (
                   <PartsPalette
                     palette={p}
