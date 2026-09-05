@@ -12,14 +12,27 @@ export function PromptPanel({
   widths,
   palette: p,
   onDoc,
+  presetPrefix,
+  presetSuffix,
 }: {
   doc: Doc;
   widths: Record<string, number>;
   palette: Palette;
   onDoc: (patch: Partial<Doc>) => void;
+  /** Injected at the top of the prompt from project preset */
+  presetPrefix?: string;
+  /** Injected at the bottom of the prompt from project preset */
+  presetSuffix?: string;
 }) {
   const lang = useLang();
-  const generated = useMemo(() => buildPrompt(doc, widths, undefined, lang), [doc, widths, lang]);
+  const generated = useMemo(() => {
+    const core = buildPrompt(doc, widths, undefined, lang);
+    const parts: string[] = [];
+    if (presetPrefix) parts.push(presetPrefix);
+    parts.push(core);
+    if (presetSuffix) parts.push(presetSuffix);
+    return parts.join("\n\n");
+  }, [doc, widths, lang, presetPrefix, presetSuffix]);
   const edited = doc.promptEdit !== undefined;
   const text = edited ? doc.promptEdit! : generated;
   const [copied, setCopied] = useState(false);

@@ -70,6 +70,7 @@ const UI = {
   // panels
   parts: { ja: "部品", en: "Parts", zh: "组件" },
   layers: { ja: "レイヤー", en: "Layers", zh: "图层" },
+  preset: { ja: "プリセット", en: "Presets", zh: "预设" },
   edit: { ja: "編集", en: "Edit", zh: "编辑" },
   prompt: { ja: "プロンプト", en: "Prompt", zh: "提示词" },
   closePanel: { ja: "パネルを閉じる", en: "Close panel", zh: "关闭面板" },
@@ -344,7 +345,7 @@ export type UIKey = keyof typeof UI;
 const KO: Record<UIKey, string> = {
   frameSize: "화면 크기", phoneFrame: "휴대전화", desktopFrame: "데스크톱", columnWidth: "휴대전화 한 화면 너비", cornerLeft: "왼쪽 모서리", cornerRight: "오른쪽 모서리", cornersEach: "모서리별로 지정", cornerTl: "왼쪽 위", cornerTr: "오른쪽 위", cornerBl: "왼쪽 아래", cornerBr: "오른쪽 아래",
   filled: "채움", tonal: "색조", elevated: "그림자", outlined: "윤곽선", standard: "표준", vibrant: "선명함",
-  parts: "부품", layers: "레이어", edit: "편집", prompt: "프롬프트", closePanel: "패널 닫기",
+  parts: "부품", layers: "레이어", preset: "프리셋", edit: "편집", prompt: "프롬프트", closePanel: "패널 닫기",
   search: "검색", favorites: "즐겨찾기", addFavorite: "즐겨찾기에 추가", removeFavorite: "즐겨찾기에서 제거", clear: "지우기", language: "언어",
   select: "선택 (V)", hand: "손 도구 (H / Space)", blank: "빈 캔버스", phone: "휴대전화 화면", addFrame: "화면 추가", preview: "미리보기 (P)",
   zoomIn: "확대 (+)", zoomOut: "축소 (-)", fit: "전체 맞춤 (0)", undo: "실행 취소 (Ctrl+Z)", redo: "다시 실행 (Ctrl+Shift+Z)",

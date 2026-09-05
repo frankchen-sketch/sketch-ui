@@ -82,6 +82,9 @@ import { Preview } from "@/components/Preview";
 import { Logo } from "@/components/Logo";
 import { PartsPalette } from "@/components/PartsPalette";
 import { PromptPanel } from "@/components/PromptPanel";
+import { PresetSelector } from "@/components/PresetSelector";
+import type { ProjectPreset } from "@/lib/presets";
+import { paletteOfPreset, themeOfPreset, presetPromptContext, loadAllPresets } from "@/lib/presets";
 import { GitHubLink, Mode, Toolbar } from "@/components/Toolbar";
 import { LangMenu } from "@/components/Menus";
 import { AiActionKey, AiPanel, aiErrorText } from "@/components/AiPanel";
@@ -297,9 +300,10 @@ function ThinkingRing({ p, frame }: { p: Palette; frame: Frame }) {
   );
 }
 
-type LeftTab = "parts" | "layers" | "color" | "shape" | "type" | "motion" | "ai";
-/** the left rail: parts and layers, then the four theme axes of the whole design */
-const LEFT_TABS: { key: LeftTab; icon: string; title: "parts" | "layers" | "colors" | "shape" | "typography" | "motion" | "ai" }[] = [
+type LeftTab = "preset" | "parts" | "layers" | "color" | "shape" | "type" | "motion" | "ai";
+/** the left rail: project preset, parts and layers, then the four theme axes of the whole design */
+const LEFT_TABS: { key: LeftTab; icon: string; title: "preset" | "parts" | "layers" | "colors" | "shape" | "typography" | "motion" | "ai" }[] = [
+  { key: "preset", icon: "folder_special", title: "preset" },
   { key: "parts", icon: "add_box", title: "parts" },
   { key: "layers", icon: "layers", title: "layers" },
   { key: "color", icon: "palette", title: "colors" },
@@ -318,7 +322,23 @@ export default function Page() {
   const [customPalette, setCustomPalette] = useState<Palette | null>(null);
   const [dynamicColor, setDynamicColor] = useState(false);
   const [theme, setTheme] = useState<Theme>(DEFAULT_THEME);
+  const [activePresetKey, setActivePresetKey] = useState<string | null>(null);
   const patchTheme = (patch: Partial<Theme>) => setTheme((t) => ({ ...t, ...patch }));
+  /** When a preset is selected, apply its palette + theme; when deselected, reset */
+  const handlePresetSelect = (preset: ProjectPreset | null) => {
+    if (!preset) {
+      setActivePresetKey(null);
+      // Reset to default palette and theme
+      setPaletteKey("purple");
+      setCustomPalette(null);
+      setTheme(DEFAULT_THEME);
+      return;
+    }
+    setActivePresetKey(preset.key);
+    setCustomPalette(paletteOfPreset(preset));
+    setPaletteKey(preset.key); // triggers paletteOf to use custom
+    setTheme(themeOfPreset(preset));
+  };
   const [frame, setFrame] = useState<FrameMode>("phone");
   const [lang, setLang] = useState<Lang>("zh");
   const changeLanguage = (next: Lang) => {
@@ -400,6 +420,13 @@ export default function Page() {
   const p = paletteOf(paletteKey, customPalette, theme);
   /* corner helpers read the shape scale outside React; keep it current before anything renders */
   setGlobalShape(theme.shape);
+
+  /* preset prompt context: injected into generated prompts when a project preset is active */
+  const activePreset = useMemo(() => {
+    if (!activePresetKey) return null;
+    return loadAllPresets().find((pr) => pr.key === activePresetKey) ?? null;
+  }, [activePresetKey]);
+  const presetCtx = useMemo(() => presetPromptContext(activePreset), [activePreset]);
 
   const canvasRef = useRef<HTMLDivElement>(null);
   const measureEls = useRef<Map<string, HTMLElement>>(new Map());
@@ -2814,7 +2841,7 @@ export default function Page() {
               )}
               <div style={{ height: 6 }} />
               {LEFT_TABS.map((tab, i) => (
-                <div key={tab.key} style={{ marginTop: i === 2 || i === 6 ? 10 : 0 }}>
+                <div key={tab.key} style={{ marginTop: i === 3 || i === 7 ? 10 : 0 }}>
                   <IconBtn
                     icon={tab.icon}
                     p={p}
@@ -2860,7 +2887,15 @@ export default function Page() {
                 />
               </div>
               <div style={{ flex: 1, minHeight: 0 }}>
-                {leftTab === "parts" ? (
+                {leftTab === "preset" ? (
+                  <div style={{ padding: "12px 8px", overflowY: "auto", height: "100%" }}>
+                    <PresetSelector
+                      palette={p}
+                      activePresetKey={activePresetKey}
+                      onSelect={handlePresetSelect}
+                    />
+                  </div>
+                ) : leftTab === "parts" ? (
                   <PartsPalette
                     palette={p}
                     favorites={favorites}
@@ -3512,6 +3547,8 @@ export default function Page() {
                   doc={doc}
                   widths={widths}
                   palette={p}
+                  presetPrefix={presetCtx.prefix || undefined}
+                  presetSuffix={presetCtx.suffix || undefined}
                   onDoc={(patch) => {
                     if (patch.title !== undefined) setTitle(patch.title);
                     if (patch.brief !== undefined) setBrief(patch.brief);
