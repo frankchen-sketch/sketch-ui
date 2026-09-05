@@ -7,7 +7,7 @@ import { Lang } from "./i18n";
  * prompt and a fixed JSON answer shape, and the result is only applied after the
  * author has looked at it. Coordinates are never touched by the model. */
 
-export type Provider = "claude" | "openai" | "gemini" | "deepseek";
+export type Provider = "nous" | "apineed" | "claude" | "openai" | "gemini" | "deepseek";
 
 export type AiSettings = {
   provider: Provider;
@@ -17,6 +17,8 @@ export type AiSettings = {
 };
 
 export const PROVIDERS: { key: Provider; label: string; baseUrl: string; model: string; keysUrl?: string }[] = [
+  { key: "nous", label: "Nous", baseUrl: "https://inference-api.nousresearch.com/v1", model: "z-ai/glm-5.3-flash", keysUrl: "https://portal.nousresearch.com" },
+  { key: "apineed", label: "Apineed", baseUrl: "https://apineed.com/v1", model: "z-ai/glm-5.3-flash", keysUrl: "https://apineed.com" },
   { key: "openai", label: "OpenAI", baseUrl: "https://api.openai.com/v1", model: "gpt-5.6-luna", keysUrl: "https://platform.openai.com/api-keys" },
   { key: "claude", label: "Claude", baseUrl: "https://api.anthropic.com", model: "claude-sonnet-5", keysUrl: "https://console.anthropic.com/settings/keys" },
   { key: "gemini", label: "Gemini", baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai", model: "gemini-3.8-flash", keysUrl: "https://aistudio.google.com/apikey" },
@@ -25,7 +27,7 @@ export const PROVIDERS: { key: Provider; label: string; baseUrl: string; model: 
 
 export const providerSpec = (k: Provider) => PROVIDERS.find((p) => p.key === k) ?? PROVIDERS[0];
 
-export const DEFAULT_AI: AiSettings = { provider: PROVIDERS[0].key, baseUrl: PROVIDERS[0].baseUrl, model: PROVIDERS[0].model, key: "" };
+export const DEFAULT_AI: AiSettings = { provider: "nous", baseUrl: "https://inference-api.nousresearch.com/v1", model: "z-ai/glm-5.3-flash", key: "" };
 
 const STORE_KEY = "m3e:ai";
 
@@ -53,8 +55,9 @@ export function saveAiSettings(s: AiSettings) {
 
 const isLocal = (u: string) => /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:|\/|$)/i.test(u.trim());
 
-/** a hosted endpoint needs a key; a server on this machine may run without one */
-export const hasKey = (s: AiSettings) => s.key.trim().length > 0 || isLocal(s.baseUrl);
+/** a hosted endpoint needs a key; a server on this machine may run without one;
+ *  nous/apineed use a local proxy that reads keys from Hermes config */
+export const hasKey = (s: AiSettings) => s.key.trim().length > 0 || isLocal(s.baseUrl) || s.provider === "nous" || s.provider === "apineed";
 
 /** the key must not travel over plain http, except to this machine */
 export const isSecureUrl = (u: string) => /^https:\/\//i.test(u.trim()) || isLocal(u);
@@ -100,19 +103,29 @@ export async function complete(s: AiSettings, system: string, user: string, sign
       .map((b: { text: string }) => b.text)
       .join("");
   }
+  // For Nous/Apineed: route through local proxy (reads API key from Hermes config)
+  const useProxy = s.provider === "nous" || s.provider === "apineed";
+  const proxyUrl = "http://127.0.0.1:3456/v1/chat/completions";
+
   const headers: Record<string, string> = { "content-type": "application/json" };
-  if (s.key.trim()) headers.authorization = `Bearer ${s.key.trim()}`;
-  const res = await fetch(`${base}/chat/completions`, {
+  if (!useProxy && s.key.trim()) headers.authorization = `Bearer ${s.key.trim()}`;
+  const fetchUrl = useProxy ? proxyUrl : `${base}/chat/completions`;
+  const body: Record<string, unknown> = {
+    model,
+    messages: [
+      { role: "system", content: system },
+      { role: "user", content: user },
+    ],
+  };
+  if (useProxy) {
+    body._provider = s.provider;
+    body._baseUrl = `${base}/chat/completions`;
+  }
+  const res = await fetch(fetchUrl, {
     method: "POST",
     signal,
     headers,
-    body: JSON.stringify({
-      model,
-      messages: [
-        { role: "system", content: system },
-        { role: "user", content: user },
-      ],
-    }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error(await readError(res));
   const j = await res.json();

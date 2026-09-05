@@ -164,6 +164,7 @@ function ProviderGroup({ value, onChange, p }: { value: Provider; onChange: (k: 
 export function AiPanel({ p, settings, onSettings }: { p: Palette; settings: AiSettings; onSettings: (s: AiSettings) => void }) {
   const lang = useLang();
   const spec = providerSpec(settings.provider);
+  const useProxy = settings.provider === "nous" || settings.provider === "apineed";
   const pick = (k: Provider) => {
     const s = providerSpec(k);
     onSettings({ ...settings, provider: k, baseUrl: s.baseUrl, model: s.model });
@@ -189,17 +190,26 @@ export function AiPanel({ p, settings, onSettings }: { p: Palette; settings: AiS
             <Label
               p={p}
               right={
-                spec.keysUrl && (
+                spec.keysUrl && !useProxy && (
                   <a href={spec.keysUrl} target="_blank" rel="noreferrer" style={{ fontSize: 12, fontWeight: 600, color: p.primary }}>
                     {t("aiGetKey", lang)}
                   </a>
                 )
               }
             >
-              {t("aiKey", lang)}
+              {useProxy ? "连接方式" : t("aiKey", lang)}
             </Label>
-            <Input label={t("aiKey", lang)} value={settings.key} onChange={(key) => onSettings({ ...settings, key })} placeholder="sk-…" p={p} type="password" />
-            <div style={{ fontSize: 12, lineHeight: 1.5, color: p.onSurfaceVariant, marginTop: 8, padding: "0 4px" }}>{t("aiKeyHint", lang)}</div>
+            {useProxy ? (
+              <div style={{ fontSize: 12, lineHeight: 1.6, color: p.onSurfaceVariant, padding: "8px 12px", borderRadius: 12, background: p.surfaceContainerLow }}>
+                通过本地代理自动读取 Hermes 配置中的 API Key。<br />
+                确保 <code style={{ background: p.surfaceContainerHighest, padding: "1px 4px", borderRadius: 4, fontSize: 11 }}>scripts/ai-proxy.mjs</code> 正在运行。
+              </div>
+            ) : (
+              <>
+                <Input label={t("aiKey", lang)} value={settings.key} onChange={(key) => onSettings({ ...settings, key })} placeholder="sk-…" p={p} type="password" />
+                <div style={{ fontSize: 12, lineHeight: 1.5, color: p.onSurfaceVariant, marginTop: 8, padding: "0 4px" }}>{t("aiKeyHint", lang)}</div>
+              </>
+            )}
           </div>
         </div>
       </div>
