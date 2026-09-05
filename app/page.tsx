@@ -2913,6 +2913,12 @@ export default function Page() {
                       setGroups((prev) => [...prev, ...offsetGroups]);
                       setLeftTab("parts"); // switch to parts to show what was added
                     }}
+                    onImport={(importedGroups, pageName) => {
+                      // Replace canvas with imported layout
+                      setGroups(importedGroups);
+                      setTitle(pageName);
+                      setLeftTab("parts");
+                    }}
                   />
                 ) : leftTab === "parts" ? (
                   <PartsPalette

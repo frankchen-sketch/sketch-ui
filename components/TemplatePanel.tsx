@@ -11,6 +11,7 @@ import {
   BUILTIN_TEMPLATES,
   loadExternalTemplates,
 } from "@/lib/templates";
+import { ImportPanel } from "./ImportPanel";
 
 const CATEGORY_LABELS: Record<TemplateCategory, { label: string; icon: string }> = {
   page: { label: "页面", icon: "description" },
@@ -23,13 +24,15 @@ interface TemplatePanelProps {
   palette: Palette;
   activePresetKey: string | null;
   onInsert: (groups: Group[]) => void;
+  onImport: (groups: Group[], pageName: string) => void;
   onSaveFromCanvas?: () => void;
 }
 
-export function TemplatePanel({ palette: p, activePresetKey, onInsert, onSaveFromCanvas }: TemplatePanelProps) {
+export function TemplatePanel({ palette: p, activePresetKey, onInsert, onImport, onSaveFromCanvas }: TemplatePanelProps) {
   const [filter, setFilter] = useState<TemplateCategory | "all">("all");
   const [search, setSearch] = useState("");
   const [externalTemplates, setExternalTemplates] = useState<PageTemplate[]>([]);
+  const [showImport, setShowImport] = useState(false);
 
   useEffect(() => {
     loadExternalTemplates().then(setExternalTemplates);
@@ -120,6 +123,36 @@ export function TemplatePanel({ palette: p, activePresetKey, onInsert, onSaveFro
             boxSizing: "border-box",
           }}
         />
+
+        {/* Import toggle */}
+        <button
+          onClick={() => setShowImport(!showImport)}
+          className="m3-press"
+          style={{
+            width: "100%",
+            padding: "8px 12px",
+            borderRadius: 10,
+            border: `1px dashed ${p.primary}`,
+            background: showImport ? p.primaryContainer : "transparent",
+            color: showImport ? p.onPrimaryContainer : p.primary,
+            fontSize: 12,
+            fontWeight: 600,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 6,
+            marginTop: 8,
+          }}
+        >
+          <span className="material-symbols-rounded" style={{ fontSize: 16 }}>
+            {showImport ? "expand_less" : "download"}
+          </span>
+          {showImport ? "收起导入" : "从现有站点导入"}
+        </button>
+
+        {/* Import panel */}
+        {showImport && <ImportPanel palette={p} onImport={onImport} />}
 
         {/* Category filter chips */}
         <div style={{ display: "flex", gap: 4, marginTop: 8, flexWrap: "wrap" }}>

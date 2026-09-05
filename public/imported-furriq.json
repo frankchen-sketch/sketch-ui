@@ -1,0 +1,185 @@
+{
+  "key": "imported-furriq-com",
+  "name": "furriq.com — 导入页面",
+  "description": "从 https://www.furriq.com/ 导入的真实页面结构，9 个区块",
+  "category": "page",
+  "projectKey": null,
+  "icon": "📥",
+  "groups": [
+    {
+      "id": "p2",
+      "x": 16,
+      "y": 0,
+      "axis": "y",
+      "items": [
+        {
+          "id": "p1",
+          "kind": "box",
+          "label": "Privacy firstNo original image storage by default.Photo-awareLocal quality check",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl space-y-6\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-8\">"
+    },
+    {
+      "id": "p4",
+      "x": 16,
+      "y": 96,
+      "axis": "y",
+      "items": [
+        {
+          "id": "p3",
+          "kind": "box",
+          "label": "Real Results from Real CatsSee how our AI identified different breedsEach cat ge",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl\">"
+        }
+      ],
+      "_section": "section.border-line-warm",
+      "_note": "Source: <section class=\"border-line-warm bg-surface border-y px-4 py-12\">"
+    },
+    {
+      "id": "p6",
+      "x": 16,
+      "y": 192,
+      "axis": "y",
+      "items": [
+        {
+          "id": "p5",
+          "kind": "box",
+          "label": "Trusted by Cat Owners1,000+photos analyzed61breeds covered100%free to use",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-12\">"
+    },
+    {
+      "id": "p8",
+      "x": 16,
+      "y": 288,
+      "axis": "y",
+      "items": [
+        {
+          "id": "p7",
+          "kind": "box",
+          "label": "Cat Breed ChartCompare 61 Popular Breeds at a GlanceUse our interactive chart to",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl\">"
+        }
+      ],
+      "_section": "section.border-line-warm",
+      "_note": "Source: <section class=\"border-line-warm bg-surface border-t px-4 py-12\">"
+    },
+    {
+      "id": "pa",
+      "x": 16,
+      "y": 384,
+      "axis": "y",
+      "items": [
+        {
+          "id": "p9",
+          "kind": "box",
+          "label": "Popular BreedsStart With a Popular BreedNot sure what your cat is? Explore these",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-8\">"
+    },
+    {
+      "id": "pc",
+      "x": 16,
+      "y": 480,
+      "axis": "y",
+      "items": [
+        {
+          "id": "pb",
+          "kind": "box",
+          "label": "Free prep toolsBefore you use any photo-based identifier, check your photo first",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl space-y-5\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-8\">"
+    },
+    {
+      "id": "pe",
+      "x": 16,
+      "y": 576,
+      "axis": "y",
+      "items": [
+        {
+          "id": "pd",
+          "kind": "box",
+          "label": "How It Works1. UploadPick a well-lit photo of your cat. The tool checks quality ",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto max-w-6xl\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-8\">"
+    },
+    {
+      "id": "pg",
+      "x": 16,
+      "y": 672,
+      "axis": "y",
+      "items": [
+        {
+          "id": "pf",
+          "kind": "box",
+          "label": "Frequently asked questionsWhat a photo can tell you, and what it cannot.Clear ex",
+          "variant": "filled",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.65fr_1.35fr]\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-10 sm:py-14\">"
+    },
+    {
+      "id": "pi",
+      "x": 16,
+      "y": 768,
+      "axis": "y",
+      "items": [
+        {
+          "id": "ph",
+          "kind": "box",
+          "label": "Help us make the answer more useful.Share a question, correction, or experience ",
+          "variant": "outlined",
+          "icon": null,
+          "bold": false,
+          "_note": "<div class=\"border-line-warm mx-auto grid max-w-6xl gap-8 border-t pt-10\">"
+        }
+      ],
+      "_section": "section.px-4",
+      "_note": "Source: <section class=\"px-4 py-10 sm:py-14\">"
+    }
+  ],
+  "tags": [
+    "imported",
+    "furriq.com"
+  ]
+}

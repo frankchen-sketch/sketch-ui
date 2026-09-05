@@ -1,7 +1,7 @@
 {
   "name": "sketch-ui",
   "version": "0.1.0",
-  "description": "Drag-and-drop UI sketcher that generates AI coding prompts",
+  "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
   "private": true,
   "engines": {
     "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
@@ -25,11 +25,11 @@
     "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "jsdom": "^30.0.1",
     "tailwindcss": "^4",
     "typescript": "^7",
     "vitest": "^5.0.0"
   },
-  "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
   "license": "MIT",
   "repository": {
     "type": "git",
