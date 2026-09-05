@@ -1,0 +1,1835 @@
+{
+  "key": "imported-gridpaw-com",
+  "name": "gridpaw.com — 导入页面",
+  "description": "从 https://gridpaw.com/ 导入的真实页面结构，15 个区块，共 167 个元素",
+  "category": "page",
+  "projectKey": "gridpaw",
+  "icon": "📥",
+  "groups": [
+    {
+      "id": "ij",
+      "x": 16,
+      "y": 0,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i1",
+          "kind": "button",
+          "label": "Games",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"game-switcher-btn\"> [button]"
+        },
+        {
+          "id": "i2",
+          "kind": "button",
+          "label": "GridPaw Shikaku Puzzle Game",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"brand\"> [link]"
+        },
+        {
+          "id": "i3",
+          "kind": "button",
+          "label": "Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4",
+          "kind": "button",
+          "label": "🟧 ShikakuRectangle partition puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"active\"> [link]"
+        },
+        {
+          "id": "i5",
+          "kind": "button",
+          "label": "💡 AkariLight Up puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i6",
+          "kind": "button",
+          "label": "🧩 PictominoSpatial reasoning puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i7",
+          "kind": "button",
+          "label": "Walkthroughs",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i8",
+          "kind": "button",
+          "label": "How to Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i9",
+          "kind": "button",
+          "label": "Tips",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "ia",
+          "kind": "button",
+          "label": "Daily",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "ib",
+          "kind": "button",
+          "label": "Solver",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "ic",
+          "kind": "box",
+          "label": "GridPaw Shikaku Puzzle Game",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"brand-name\"> [container]"
+        },
+        {
+          "id": "id",
+          "kind": "box",
+          "label": "GridPaw",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"big\"> [container]"
+        },
+        {
+          "id": "ie",
+          "kind": "box",
+          "label": "Shikaku Puzzle Game",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"small\"> [container]"
+        },
+        {
+          "id": "if",
+          "kind": "box",
+          "label": "Play Games 🟧 ShikakuRectangle partition puzzle 💡 AkariLight Up puzzle 🧩 Picto…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<nav class=\"header-nav\"> [container]"
+        },
+        {
+          "id": "ig",
+          "kind": "box",
+          "label": "Rectangle partition puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        },
+        {
+          "id": "ih",
+          "kind": "box",
+          "label": "Light Up puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        },
+        {
+          "id": "ii",
+          "kind": "box",
+          "label": "Spatial reasoning puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        }
+      ],
+      "_section": "<header> .site-header",
+      "_note": "Source: <header class=\"site-header\">"
+    },
+    {
+      "id": "ix",
+      "x": 16,
+      "y": 1048,
+      "axis": "y",
+      "items": [
+        {
+          "id": "ik",
+          "kind": "button",
+          "label": "Games",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"game-switcher-btn\"> [button]"
+        },
+        {
+          "id": "il",
+          "kind": "button",
+          "label": "Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "im",
+          "kind": "button",
+          "label": "🟧 ShikakuRectangle partition puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"active\"> [link]"
+        },
+        {
+          "id": "in",
+          "kind": "button",
+          "label": "💡 AkariLight Up puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "io",
+          "kind": "button",
+          "label": "🧩 PictominoSpatial reasoning puzzle",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "ip",
+          "kind": "button",
+          "label": "Walkthroughs",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "iq",
+          "kind": "button",
+          "label": "How to Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "ir",
+          "kind": "button",
+          "label": "Tips",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "is",
+          "kind": "button",
+          "label": "Daily",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "it",
+          "kind": "button",
+          "label": "Solver",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "iu",
+          "kind": "box",
+          "label": "Rectangle partition puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        },
+        {
+          "id": "iv",
+          "kind": "box",
+          "label": "Light Up puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        },
+        {
+          "id": "iw",
+          "kind": "box",
+          "label": "Spatial reasoning puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"game-desc\"> [container]"
+        }
+      ],
+      "_section": "<nav> .header-nav",
+      "_note": "Source: <nav class=\"header-nav\">"
+    },
+    {
+      "id": "i18",
+      "x": 16,
+      "y": 1816,
+      "axis": "y",
+      "items": [
+        {
+          "id": "iy",
+          "kind": "button",
+          "label": "↩Undo",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"icon-btn\"> [button]"
+        },
+        {
+          "id": "iz",
+          "kind": "button",
+          "label": "🔄New",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"icon-btn\"> [button]"
+        },
+        {
+          "id": "i10",
+          "kind": "button",
+          "label": "💡Hint",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"icon-btn\"> [button]"
+        },
+        {
+          "id": "i11",
+          "kind": "button",
+          "label": "🔊Sound",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"icon-btn\"> [button]"
+        },
+        {
+          "id": "i12",
+          "kind": "button",
+          "label": "📅Daily",
+          "icon": "touch_app",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<button class=\"icon-btn\"> [button]"
+        },
+        {
+          "id": "i13",
+          "kind": "box",
+          "label": "Undo",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"tip\"> [container]"
+        },
+        {
+          "id": "i14",
+          "kind": "box",
+          "label": "New",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"tip\"> [container]"
+        },
+        {
+          "id": "i15",
+          "kind": "box",
+          "label": "Hint",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"tip\"> [container]"
+        },
+        {
+          "id": "i16",
+          "kind": "box",
+          "label": "Sound",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"tip\"> [container]"
+        },
+        {
+          "id": "i17",
+          "kind": "box",
+          "label": "Daily",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"tip\"> [container]"
+        }
+      ],
+      "_section": "<section> .game-card",
+      "_note": "Source: <section class=\"game-card\">"
+    },
+    {
+      "id": "i1b",
+      "x": 16,
+      "y": 2416,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i19",
+          "kind": "text",
+          "label": "🏆 Today's Leaderboard",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: 🏆 Today's Leaderboard"
+        },
+        {
+          "id": "i1a",
+          "kind": "text",
+          "label": "Sign in and solve today's Daily Challenge to appear here!",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        }
+      ],
+      "_section": "<section> .seo-content",
+      "_note": "Source: <section class=\"seo-content\">"
+    },
+    {
+      "id": "i1w",
+      "x": 16,
+      "y": 2568,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i1c",
+          "kind": "text",
+          "label": "Tips & Techniques",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Tips & Techniques"
+        },
+        {
+          "id": "i1d",
+          "kind": "text",
+          "label": "Prime Numbers",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1e",
+          "kind": "text",
+          "label": "Rectangle Shapes",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1f",
+          "kind": "text",
+          "label": "5×5 Strategy",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1g",
+          "kind": "text",
+          "label": "Elimination",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1h",
+          "kind": "text",
+          "label": "Online Solver",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1i",
+          "kind": "text",
+          "label": "Area Rules",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1j",
+          "kind": "text",
+          "label": "Why Prime Numbers Are Your Best Friend",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1k",
+          "kind": "text",
+          "label": "📝 From the Strategy Guide",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"strategy-list-title\"> [heading]"
+        },
+        {
+          "id": "i1l",
+          "kind": "button",
+          "label": "1️⃣ Prime Numbers 2, 3, 5, 7 can only form 1×N rectangles. Place them first — th…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1m",
+          "kind": "button",
+          "label": "🔲 Rectangle Shapes A \"6\" can be 1×6, 2×3, 3×2, or 6×1. Learn which shapes fit w…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1n",
+          "kind": "button",
+          "label": "5️⃣ 5×5 Strategy Start with smaller grids to build pattern recognition before ta…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1o",
+          "kind": "button",
+          "label": "🧠 Elimination If placing a rectangle blocks another number, it's wrong. Think o…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1p",
+          "kind": "button",
+          "label": "🔍 Online Solver Stuck? Enter your puzzle and get the unique solution instantly.",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1q",
+          "kind": "button",
+          "label": "📐 Area Rules Each rectangle's area must equal its number. No more, no fewer.",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"tip-card\"> [link]"
+        },
+        {
+          "id": "i1r",
+          "kind": "button",
+          "label": "Read Full Guide →",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"featured-tip-link\"> [link]"
+        },
+        {
+          "id": "i1s",
+          "kind": "button",
+          "label": "5 Signs You're Ready for Hard Puzzles Mastered primes and corners? Here's how to…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-item\"> [link]"
+        },
+        {
+          "id": "i1t",
+          "kind": "button",
+          "label": "The Elimination Method Explained When basic rules aren't enough, contradiction t…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-item\"> [link]"
+        },
+        {
+          "id": "i1u",
+          "kind": "button",
+          "label": "Shikaku Rules — Complete Beginner's Guide Everything you need to solve your firs…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-item\"> [link]"
+        },
+        {
+          "id": "i1v",
+          "kind": "button",
+          "label": "All Tips & Strategies →",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-item\"> [link]"
+        }
+      ],
+      "_section": "<section> .section",
+      "_note": "Source: <section class=\"section\">"
+    },
+    {
+      "id": "i2g",
+      "x": 16,
+      "y": 3728,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i1x",
+          "kind": "text",
+          "label": "Level Guides",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Level Guides"
+        },
+        {
+          "id": "i1y",
+          "kind": "text",
+          "label": "Tutorial Puzzles — Getting Started",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i1z",
+          "kind": "text",
+          "label": "Easy Puzzles — Build Confidence",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i20",
+          "kind": "text",
+          "label": "Medium Puzzles — Core Techniques",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i21",
+          "kind": "text",
+          "label": "Medium-Hard — Multi-Step",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i22",
+          "kind": "text",
+          "label": "Hard Puzzles — Advanced Logic",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i23",
+          "kind": "text",
+          "label": "Daily Challenge — Super Hard",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i24",
+          "kind": "button",
+          "label": "Beginner Tutorial Puzzles — Getting Started 3×3 grids with guided hints. Learn r…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i25",
+          "kind": "button",
+          "label": "Easy Easy Puzzles — Build Confidence 5×5 grids with simple shapes. Practice prim…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i26",
+          "kind": "button",
+          "label": "Medium Medium Puzzles — Core Techniques 5×6 grids with complex shapes. Master pr…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i27",
+          "kind": "button",
+          "label": "Medium-Hard Medium-Hard — Multi-Step 6×6 grids. Combine multiple techniques and …",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i28",
+          "kind": "button",
+          "label": "Hard Hard Puzzles — Advanced Logic 7×8 grids requiring deep reasoning. Chain eli…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i29",
+          "kind": "button",
+          "label": "Daily Daily Challenge — Super Hard 10×10 puzzle seeded by date. Same puzzle worl…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"walkthrough-card\"> [link]"
+        },
+        {
+          "id": "i2a",
+          "kind": "text",
+          "label": "3×3 grids with guided hints. Learn rectangle placement, area rules, and eliminat…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2b",
+          "kind": "text",
+          "label": "5×5 grids with simple shapes. Practice prime numbers and corner strategies at yo…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2c",
+          "kind": "text",
+          "label": "5×6 grids with complex shapes. Master prime numbers, corner strategies, and mult…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2d",
+          "kind": "text",
+          "label": "6×6 grids. Combine multiple techniques and plan several moves ahead.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2e",
+          "kind": "text",
+          "label": "7×8 grids requiring deep reasoning. Chain eliminations, overlap detection, and f…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2f",
+          "kind": "text",
+          "label": "10×10 puzzle seeded by date. Same puzzle worldwide — compare your time with frie…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        }
+      ],
+      "_section": "<section> .section",
+      "_note": "Source: <section class=\"section\">"
+    },
+    {
+      "id": "i2q",
+      "x": 16,
+      "y": 4832,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i2h",
+          "kind": "text",
+          "label": "What Players Say",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: What Players Say"
+        },
+        {
+          "id": "i2i",
+          "kind": "text",
+          "label": "\"Finally a puzzle game that's actually relaxing. The cat visuals make it so much…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2j",
+          "kind": "text",
+          "label": "\"My 8-year-old loves this! She's learning spatial reasoning without even realizi…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2k",
+          "kind": "text",
+          "label": "\"I've tried dozens of Shikaku apps. This one has the best UI by far — clean, fas…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2l",
+          "kind": "text",
+          "label": "\"The daily challenge keeps me coming back. Competing with friends on solve time …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2m",
+          "kind": "text",
+          "label": "\"No ads, no paywalls, no nonsense. Just pure logic puzzles. This is how browser …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2n",
+          "kind": "text",
+          "label": "\"Great brain trainer during commute. Wish there was a dark mode but otherwise pe…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i2o",
+          "kind": "box",
+          "label": "Players",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        },
+        {
+          "id": "i2p",
+          "kind": "box",
+          "label": "👨‍👧",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"testimonial-avatar\"> [container]"
+        }
+      ],
+      "_section": "<section> .section",
+      "_note": "Source: <section class=\"section\">"
+    },
+    {
+      "id": "i2w",
+      "x": 16,
+      "y": 5376,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i2r",
+          "kind": "text",
+          "label": "Get the App",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Get the App"
+        },
+        {
+          "id": "i2s",
+          "kind": "button",
+          "label": "📅 Try Daily Challenge",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"store-btn\"> [link]"
+        },
+        {
+          "id": "i2t",
+          "kind": "button",
+          "label": "▶ Play Now",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"store-btn,store-btn-outline\"> [link]"
+        },
+        {
+          "id": "i2u",
+          "kind": "text",
+          "label": "Play GridPaw anywhere, anytime. Add to your home screen for offline support, no …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i2v",
+          "kind": "box",
+          "label": "App",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        }
+      ],
+      "_section": "<section> .section",
+      "_note": "Source: <section class=\"section\">"
+    },
+    {
+      "id": "i3h",
+      "x": 16,
+      "y": 5696,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i2x",
+          "kind": "text",
+          "label": "GridPaw: Free Shikaku Puzzle Game Online",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: GridPaw: Free Shikaku Puzzle Game Online"
+        },
+        {
+          "id": "i2y",
+          "kind": "text",
+          "label": "How to Play Shikaku",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"\"> [heading]"
+        },
+        {
+          "id": "i2z",
+          "kind": "text",
+          "label": "Shikaku Difficulty Levels",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"\"> [heading]"
+        },
+        {
+          "id": "i30",
+          "kind": "text",
+          "label": "Tips & Strategy",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"\"> [heading]"
+        },
+        {
+          "id": "i31",
+          "kind": "text",
+          "label": "Why Play Shikaku at GridPaw?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"\"> [heading]"
+        },
+        {
+          "id": "i32",
+          "kind": "text",
+          "label": "Common Shikaku Mistakes to Avoid",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"\"> [heading]"
+        },
+        {
+          "id": "i33",
+          "kind": "button",
+          "label": "Tips & Strategy",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i34",
+          "kind": "button",
+          "label": "Daily Challenge",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i35",
+          "kind": "text",
+          "label": "GridPaw is a free Shikaku puzzle game with adorable cat visuals. Draw rectangles…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i36",
+          "kind": "text",
+          "label": "Whether you're new to Shikaku or a seasoned solver, GridPaw offers unlimited pro…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i37",
+          "kind": "text",
+          "label": "The rules of Shikaku are simple:",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i38",
+          "kind": "text",
+          "label": "That's it — no math beyond multiplication. The challenge is figuring out which s…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i39",
+          "kind": "text",
+          "label": "Rushing to fill cells is the fastest way to get stuck. Instead, work systematica…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i3a",
+          "kind": "text",
+          "label": "Visit our Tips & Strategy page for detailed guides on each technique.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i3b",
+          "kind": "text",
+          "label": "Unlike many puzzle sites, GridPaw has no ads interrupting gameplay, no paywalls,…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i3c",
+          "kind": "text",
+          "label": "If you enjoy Sudoku, KenKen, or other logic puzzles, Shikaku offers a refreshing…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i3d",
+          "kind": "text",
+          "label": "Forgetting area constraints: a rectangle around a \"4\" must cover exactly 4 cells…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i3e",
+          "kind": "box",
+          "label": "Shikaku",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        },
+        {
+          "id": "i3f",
+          "kind": "box",
+          "label": "Play",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        },
+        {
+          "id": "i3g",
+          "kind": "box",
+          "label": "The grid contains several numbered cells.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<li class=\"\"> [container]"
+        }
+      ],
+      "_section": "<section> .seo-section",
+      "_note": "Source: <section class=\"seo-section\">"
+    },
+    {
+      "id": "i3u",
+      "x": 16,
+      "y": 6856,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i3i",
+          "kind": "text",
+          "label": "📖 Strategy Guide",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: 📖 Strategy Guide"
+        },
+        {
+          "id": "i3j",
+          "kind": "button",
+          "label": "Shikaku Rules Complete rule breakdown with examples",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-grid-item\"> [link]"
+        },
+        {
+          "id": "i3k",
+          "kind": "button",
+          "label": "How to Play Complete beginner's walkthrough",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-grid-item\"> [link]"
+        },
+        {
+          "id": "i3l",
+          "kind": "button",
+          "label": "Tips & Strategy Beginner to advanced techniques",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-grid-item\"> [link]"
+        },
+        {
+          "id": "i3m",
+          "kind": "button",
+          "label": "Online Solver Stuck? Get the answer instantly",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-grid-item\"> [link]"
+        },
+        {
+          "id": "i3n",
+          "kind": "button",
+          "label": "Daily Challenge New puzzle every day with streaks",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"strategy-grid-item\"> [link]"
+        },
+        {
+          "id": "i3o",
+          "kind": "box",
+          "label": "Strategy",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        },
+        {
+          "id": "i3p",
+          "kind": "box",
+          "label": "Complete rule breakdown with examples",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        },
+        {
+          "id": "i3q",
+          "kind": "box",
+          "label": "Complete beginner's walkthrough",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        },
+        {
+          "id": "i3r",
+          "kind": "box",
+          "label": "Beginner to advanced techniques",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        },
+        {
+          "id": "i3s",
+          "kind": "box",
+          "label": "Stuck? Get the answer instantly",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        },
+        {
+          "id": "i3t",
+          "kind": "box",
+          "label": "New puzzle every day with streaks",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        }
+      ],
+      "_section": "<section> .seo-section",
+      "_note": "Source: <section class=\"seo-section\">"
+    },
+    {
+      "id": "i3z",
+      "x": 16,
+      "y": 7568,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i3v",
+          "kind": "text",
+          "label": "Frequently Asked Questions",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Frequently Asked Questions"
+        },
+        {
+          "id": "i3w",
+          "kind": "button",
+          "label": "How to Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i3x",
+          "kind": "button",
+          "label": "Online Solver",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i3y",
+          "kind": "box",
+          "label": "Questions",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        }
+      ],
+      "_section": "<section> .seo-section",
+      "_note": "Source: <section class=\"seo-section\">"
+    },
+    {
+      "id": "i48",
+      "x": 16,
+      "y": 7832,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i40",
+          "kind": "text",
+          "label": "Explore More Cat Puzzle Games",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Explore More Cat Puzzle Games"
+        },
+        {
+          "id": "i41",
+          "kind": "button",
+          "label": "GridPaw Akari",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i42",
+          "kind": "button",
+          "label": "Furriq",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i43",
+          "kind": "button",
+          "label": "GridPaw Pictomino",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i44",
+          "kind": "box",
+          "label": "Cat Puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"accent\"> [container]"
+        },
+        {
+          "id": "i45",
+          "kind": "box",
+          "label": "GridPaw Akari — Cat Light Up puzzle",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<li class=\"\"> [container]"
+        },
+        {
+          "id": "i46",
+          "kind": "box",
+          "label": "Furriq — AI Cat Breed Identifier",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<li class=\"\"> [container]"
+        },
+        {
+          "id": "i47",
+          "kind": "box",
+          "label": "GridPaw Pictomino — Spatial Reasoning Puzzle for Kids",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<li class=\"\"> [container]"
+        }
+      ],
+      "_section": "<section> .seo-section",
+      "_note": "Source: <section class=\"seo-section\">"
+    },
+    {
+      "id": "i4k",
+      "x": 16,
+      "y": 8320,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i49",
+          "kind": "button",
+          "label": "Rules",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4a",
+          "kind": "button",
+          "label": "Tips",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4b",
+          "kind": "button",
+          "label": "Daily",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4c",
+          "kind": "button",
+          "label": "Solver",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4d",
+          "kind": "button",
+          "label": "How to Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4e",
+          "kind": "button",
+          "label": "GridPaw Akari",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4f",
+          "kind": "button",
+          "label": "GridPaw Pictomino",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4g",
+          "kind": "button",
+          "label": "Furriq",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4h",
+          "kind": "text",
+          "label": "GridPaw — Free online Shikaku puzzle with cats.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i4i",
+          "kind": "text",
+          "label": "Rules · Tips · Daily · Solver · How to Play",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        },
+        {
+          "id": "i4j",
+          "kind": "text",
+          "label": "GridPaw Akari · GridPaw Pictomino · Furriq",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"\"> [text]"
+        }
+      ],
+      "_section": "<footer> .seo-footer",
+      "_note": "Source: <footer class=\"seo-footer\">"
+    },
+    {
+      "id": "i4u",
+      "x": 16,
+      "y": 8976,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i4l",
+          "kind": "button",
+          "label": "🏠 Home",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4m",
+          "kind": "button",
+          "label": "🟧 Shikaku",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4n",
+          "kind": "button",
+          "label": "💡 Akari",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4o",
+          "kind": "button",
+          "label": "🧩 Pictomino",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4p",
+          "kind": "button",
+          "label": "📖 Rules",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4q",
+          "kind": "button",
+          "label": "💡 Tips",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4r",
+          "kind": "button",
+          "label": "📅 Daily Challenge",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4s",
+          "kind": "button",
+          "label": "🔍 Solver",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        },
+        {
+          "id": "i4t",
+          "kind": "button",
+          "label": "📚 How to Play",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"\"> [link]"
+        }
+      ],
+      "_section": "<div> .mobile-nav",
+      "_note": "Source: <div class=\"mobile-nav\">"
+    },
+    {
+      "id": "i52",
+      "x": 16,
+      "y": 9520,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i4v",
+          "kind": "text",
+          "label": "\"Finally a puzzle game that's actually relaxing. The cat visuals make it so much…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i4w",
+          "kind": "text",
+          "label": "\"My 8-year-old loves this! She's learning spatial reasoning without even realizi…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i4x",
+          "kind": "text",
+          "label": "\"I've tried dozens of Shikaku apps. This one has the best UI by far — clean, fas…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i4y",
+          "kind": "text",
+          "label": "\"The daily challenge keeps me coming back. Competing with friends on solve time …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i4z",
+          "kind": "text",
+          "label": "\"No ads, no paywalls, no nonsense. Just pure logic puzzles. This is how browser …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i50",
+          "kind": "text",
+          "label": "\"Great brain trainer during commute. Wish there was a dark mode but otherwise pe…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"testimonial-text\"> [text]"
+        },
+        {
+          "id": "i51",
+          "kind": "box",
+          "label": "👨‍👧",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"testimonial-avatar\"> [container]"
+        }
+      ],
+      "_section": "<div> .testimonial-track",
+      "_note": "Source: <div class=\"testimonial-track\">"
+    }
+  ],
+  "tags": [
+    "imported",
+    "gridpaw.com",
+    "real-page"
+  ]
+}

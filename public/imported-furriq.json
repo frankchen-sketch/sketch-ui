@@ -1,185 +1,1775 @@
 {
   "key": "imported-furriq-com",
   "name": "furriq.com — 导入页面",
-  "description": "从 https://www.furriq.com/ 导入的真实页面结构，9 个区块",
+  "description": "从 https://furriq.com/ 导入的真实页面结构，16 个区块，共 160 个元素",
   "category": "page",
-  "projectKey": null,
+  "projectKey": "furriq",
   "icon": "📥",
   "groups": [
     {
-      "id": "p2",
+      "id": "i6",
       "x": 16,
       "y": 0,
       "axis": "y",
       "items": [
         {
-          "id": "p1",
-          "kind": "box",
-          "label": "Privacy firstNo original image storage by default.Photo-awareLocal quality check",
+          "id": "i1",
+          "kind": "button",
+          "label": "Tools",
+          "icon": "open_in_new",
+          "icon2": null,
           "variant": "filled",
-          "icon": null,
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl space-y-6\">"
+          "_note": "<a class=\"text-muted-foreground,hover:text-foreground,text-sm,drop-shadow-sm,transition-colors\"> [link]"
+        },
+        {
+          "id": "i2",
+          "kind": "button",
+          "label": "Breeds",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-muted-foreground,hover:text-foreground,text-sm,drop-shadow-sm,transition-colors\"> [link]"
+        },
+        {
+          "id": "i3",
+          "kind": "button",
+          "label": "Blog",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-muted-foreground,hover:text-foreground,text-sm,drop-shadow-sm,transition-colors\"> [link]"
+        },
+        {
+          "id": "i4",
+          "kind": "button",
+          "label": "Compare",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-muted-foreground,hover:text-foreground,text-sm,drop-shadow-sm,transition-colors\"> [link]"
+        },
+        {
+          "id": "i5",
+          "kind": "button",
+          "label": "Pricing",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-muted-foreground,hover:text-foreground,text-sm,drop-shadow-sm,transition-colors\"> [link]"
         }
       ],
-      "_section": "section.px-4",
-      "_note": "Source: <section class=\"px-4 py-8\">"
+      "_section": "<nav> .hidden",
+      "_note": "Source: <nav class=\"hidden items-center gap-6 md:flex\">"
     },
     {
-      "id": "p4",
+      "id": "ir",
       "x": 16,
-      "y": 96,
+      "y": 320,
       "axis": "y",
       "items": [
         {
-          "id": "p3",
-          "kind": "box",
-          "label": "Real Results from Real CatsSee how our AI identified different breedsEach cat ge",
-          "variant": "filled",
+          "id": "i7",
+          "kind": "text",
+          "label": "Cat Breed Identifier — Free AI Tool by Photo",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<main> heading: Cat Breed Identifier — Free AI Tool by Photo"
+        },
+        {
+          "id": "i8",
+          "kind": "text",
+          "label": "Privacy defaults",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"text-ink,font-semibold\"> [heading]"
+        },
+        {
+          "id": "i9",
+          "kind": "text",
+          "label": "Result guardrail",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"text-ink,font-semibold\"> [heading]"
+        },
+        {
+          "id": "ia",
+          "kind": "text",
+          "label": "See how our AI identified different breeds",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,mt-2,font-serif,text-3xl,font-semibold\"> [heading]"
+        },
+        {
+          "id": "ib",
+          "kind": "text",
+          "label": "Compare 61 Popular Breeds at a Glance",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,mt-2,font-serif,text-3xl,font-semibold\"> [heading]"
+        },
+        {
+          "id": "ic",
+          "kind": "text",
+          "label": "Start With a Popular Breed",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,mt-2,font-serif,text-3xl,font-semibold\"> [heading]"
+        },
+        {
+          "id": "id",
+          "kind": "text",
+          "label": "Before you use any photo-based identifier, check your photo first.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,mt-2,font-serif,text-3xl,font-semibold\"> [heading]"
+        },
+        {
+          "id": "ie",
+          "kind": "text",
+          "label": "How It Works",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,font-serif,text-2xl,font-semibold,tracking-normal\"> [heading]"
+        },
+        {
+          "id": "if",
+          "kind": "text",
+          "label": "What a photo can tell you, and what it cannot.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,mt-2,font-serif,text-3xl,font-semibold\"> [heading]"
+        },
+        {
+          "id": "ig",
+          "kind": "text",
+          "label": "How do I identify my cat's breed by looking at it?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "ih",
+          "kind": "text",
+          "label": "How does a photo-based cat breed estimate work?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "ii",
+          "kind": "text",
+          "label": "What kind of photo gives the most useful result?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "ij",
+          "kind": "text",
+          "label": "Can a photo identify a mixed-breed cat accurately?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "ik",
+          "kind": "text",
+          "label": "Is tabby, tuxedo, calico, or tortoiseshell a breed?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "il",
+          "kind": "text",
+          "label": "Why might two photos of the same cat give different clues?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "im",
+          "kind": "text",
+          "label": "Is this the same as a DNA test or pedigree record?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "in",
+          "kind": "text",
+          "label": "What happens to my cat photo?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "io",
+          "kind": "text",
+          "label": "Help us make the answer more useful.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h2 class=\"text-ink,font-serif,text-3xl,font-semibold,tracking-normal\"> [heading]"
+        },
+        {
+          "id": "ip",
+          "kind": "button",
+          "label": "View Full Chart of 25 Breeds →",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl\">"
+          "_note": "<a class=\"border-brand,bg-brand,shadow-brand/20,hover:shadow-brand/30,inline-flex\"> [link]"
+        },
+        {
+          "id": "iq",
+          "kind": "button",
+          "label": "Maine CoonWondering how to tell if a cat is a Maine Coon? One of the largest dom…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
         }
       ],
-      "_section": "section.border-line-warm",
+      "_section": "<main> .overflow-x-hidden",
+      "_note": "Source: <main class=\"overflow-x-hidden\">"
+    },
+    {
+      "id": "iw",
+      "x": 16,
+      "y": 1480,
+      "axis": "y",
+      "items": [
+        {
+          "id": "is",
+          "kind": "text",
+          "label": "Cat Breed Identifier — Free AI Tool by Photo",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Cat Breed Identifier — Free AI Tool by Photo"
+        },
+        {
+          "id": "it",
+          "kind": "text",
+          "label": "Upload a photo. Our AI compares 40+ visual markers — coat, color, face shape, bo…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,max-w-2xl,text-lg,leading-8\"> [text]"
+        },
+        {
+          "id": "iu",
+          "kind": "text",
+          "label": "1,000+ cat photos analyzed",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,text-sm,font-medium\"> [text]"
+        },
+        {
+          "id": "iv",
+          "kind": "box",
+          "label": "1,000+",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"text-brand,font-bold\"> [container]"
+        }
+      ],
+      "_section": "<section> .px-4",
+      "_note": "Source: <section class=\"px-4 py-6 sm:py-8\">"
+    },
+    {
+      "id": "i1b",
+      "x": 16,
+      "y": 1744,
+      "axis": "y",
+      "items": [
+        {
+          "id": "ix",
+          "kind": "text",
+          "label": "Privacy defaults",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Privacy defaults"
+        },
+        {
+          "id": "iy",
+          "kind": "text",
+          "label": "Result guardrail",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"text-ink,font-semibold\"> [heading]"
+        },
+        {
+          "id": "iz",
+          "kind": "text",
+          "label": "No original image storage by default.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i10",
+          "kind": "text",
+          "label": "Local quality check before server work.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i11",
+          "kind": "text",
+          "label": "Likely clues, never purebred proof.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i12",
+          "kind": "text",
+          "label": "Good fit if:",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,font-semibold\"> [text]"
+        },
+        {
+          "id": "i13",
+          "kind": "text",
+          "label": "You're curious about your cat's breed and comfortable with \"likely\" rather than …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,mt-1\"> [text]"
+        },
+        {
+          "id": "i14",
+          "kind": "text",
+          "label": "Less suitable if:",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,font-semibold\"> [text]"
+        },
+        {
+          "id": "i15",
+          "kind": "text",
+          "label": "You need DNA-grade proof or expect AI to be 100% accurate.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,mt-1\"> [text]"
+        },
+        {
+          "id": "i16",
+          "kind": "text",
+          "label": "Usage",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink-soft,text-sm,font-semibold\"> [text]"
+        },
+        {
+          "id": "i17",
+          "kind": "text",
+          "label": "Loading…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,mt-1,text-base,font-semibold\"> [text]"
+        },
+        {
+          "id": "i18",
+          "kind": "text",
+          "label": "Guests get 2 free trial attempts. Setup-required checks do not consume them.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        },
+        {
+          "id": "i19",
+          "kind": "text",
+          "label": "The local quality check stays in your browser. The generate API currently record…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        },
+        {
+          "id": "i1a",
+          "kind": "text",
+          "label": "Reports should explain likely visual clues and uncertainty. They should not clai…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        }
+      ],
+      "_section": "<section> .px-4",
+      "_note": "Source: <section class=\"px-4 py-8\">"
+    },
+    {
+      "id": "i1f",
+      "x": 16,
+      "y": 2568,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i1c",
+          "kind": "text",
+          "label": "See how our AI identified different breeds",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: See how our AI identified different breeds"
+        },
+        {
+          "id": "i1d",
+          "kind": "text",
+          "label": "Real Results from Real Cats",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-semibold,tracking-wide,uppercase\"> [text]"
+        },
+        {
+          "id": "i1e",
+          "kind": "text",
+          "label": "Each cat gets 3 likely breed matches with details on traits, looks, and health.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-3,text-sm,leading-6\"> [text]"
+        }
+      ],
+      "_section": "<section> .border-line-warm",
       "_note": "Source: <section class=\"border-line-warm bg-surface border-y px-4 py-12\">"
     },
     {
-      "id": "p6",
+      "id": "i1n",
       "x": 16,
-      "y": 192,
+      "y": 2776,
       "axis": "y",
       "items": [
         {
-          "id": "p5",
-          "kind": "box",
-          "label": "Trusted by Cat Owners1,000+photos analyzed61breeds covered100%free to use",
-          "variant": "filled",
+          "id": "i1g",
+          "kind": "text",
+          "label": "Trusted by Cat Owners",
           "icon": null,
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl\">"
+          "_note": "<p class=\"text-brand,text-center,text-sm,font-semibold,tracking-wide\"> [text]"
+        },
+        {
+          "id": "i1h",
+          "kind": "text",
+          "label": "1,000+",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-4xl,font-bold\"> [text]"
+        },
+        {
+          "id": "i1i",
+          "kind": "text",
+          "label": "photos analyzed",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        },
+        {
+          "id": "i1j",
+          "kind": "text",
+          "label": "61",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-4xl,font-bold\"> [text]"
+        },
+        {
+          "id": "i1k",
+          "kind": "text",
+          "label": "breeds covered",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        },
+        {
+          "id": "i1l",
+          "kind": "text",
+          "label": "100%",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-4xl,font-bold\"> [text]"
+        },
+        {
+          "id": "i1m",
+          "kind": "text",
+          "label": "free to use",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-12\">"
     },
     {
-      "id": "p8",
+      "id": "i1s",
       "x": 16,
-      "y": 288,
+      "y": 3208,
       "axis": "y",
       "items": [
         {
-          "id": "p7",
-          "kind": "box",
-          "label": "Cat Breed ChartCompare 61 Popular Breeds at a GlanceUse our interactive chart to",
-          "variant": "filled",
+          "id": "i1o",
+          "kind": "text",
+          "label": "Compare 61 Popular Breeds at a Glance",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Compare 61 Popular Breeds at a Glance"
+        },
+        {
+          "id": "i1p",
+          "kind": "button",
+          "label": "View Full Chart of 25 Breeds →",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl\">"
+          "_note": "<a class=\"border-brand,bg-brand,shadow-brand/20,hover:shadow-brand/30,inline-flex\"> [link]"
+        },
+        {
+          "id": "i1q",
+          "kind": "text",
+          "label": "Cat Breed Chart",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-semibold,tracking-wide,uppercase\"> [text]"
+        },
+        {
+          "id": "i1r",
+          "kind": "text",
+          "label": "Use our interactive chart to compare size, coat, eyes, ears, and personality tra…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-3,text-sm,leading-6\"> [text]"
         }
       ],
-      "_section": "section.border-line-warm",
+      "_section": "<section> .border-line-warm",
       "_note": "Source: <section class=\"border-line-warm bg-surface border-t px-4 py-12\">"
     },
     {
-      "id": "pa",
+      "id": "i2b",
       "x": 16,
-      "y": 384,
+      "y": 3472,
       "axis": "y",
       "items": [
         {
-          "id": "p9",
-          "kind": "box",
-          "label": "Popular BreedsStart With a Popular BreedNot sure what your cat is? Explore these",
-          "variant": "filled",
+          "id": "i1t",
+          "kind": "text",
+          "label": "Start With a Popular Breed",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Start With a Popular Breed"
+        },
+        {
+          "id": "i1u",
+          "kind": "button",
+          "label": "Maine CoonWondering how to tell if a cat is a Maine Coon? One of the largest dom…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl\">"
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
+        },
+        {
+          "id": "i1v",
+          "kind": "button",
+          "label": "British ShorthairA sturdy, round-faced cat with a dense plush coat and a calm, u…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
+        },
+        {
+          "id": "i1w",
+          "kind": "button",
+          "label": "RagdollA large, semi-longhaired cat breed known for its striking blue eyes, colo…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
+        },
+        {
+          "id": "i1x",
+          "kind": "button",
+          "label": "SphynxA hairless cat with a warm suede-like skin, oversized bat ears, and a pers…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
+        },
+        {
+          "id": "i1y",
+          "kind": "button",
+          "label": "BengalA striking, wild-looking domestic cat breed developed from Asian leopard c…",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,hover:border-brand,block,rounded-lg\"> [link]"
+        },
+        {
+          "id": "i1z",
+          "kind": "text",
+          "label": "Popular Breeds",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-semibold,tracking-wide,uppercase\"> [text]"
+        },
+        {
+          "id": "i20",
+          "kind": "text",
+          "label": "Not sure what your cat is? Explore these commonly searched breeds first.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-3,text-sm,leading-6\"> [text]"
+        },
+        {
+          "id": "i21",
+          "kind": "text",
+          "label": "Maine Coon",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-medium\"> [text]"
+        },
+        {
+          "id": "i22",
+          "kind": "text",
+          "label": "Wondering how to tell if a cat is a Maine Coon? One of the largest domesticated …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,line-clamp-2,text-xs\"> [text]"
+        },
+        {
+          "id": "i23",
+          "kind": "text",
+          "label": "British Shorthair",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-medium\"> [text]"
+        },
+        {
+          "id": "i24",
+          "kind": "text",
+          "label": "A sturdy, round-faced cat with a dense plush coat and a calm, undemanding person…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,line-clamp-2,text-xs\"> [text]"
+        },
+        {
+          "id": "i25",
+          "kind": "text",
+          "label": "Ragdoll",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-medium\"> [text]"
+        },
+        {
+          "id": "i26",
+          "kind": "text",
+          "label": "A large, semi-longhaired cat breed known for its striking blue eyes, color-point…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,line-clamp-2,text-xs\"> [text]"
+        },
+        {
+          "id": "i27",
+          "kind": "text",
+          "label": "Sphynx",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-medium\"> [text]"
+        },
+        {
+          "id": "i28",
+          "kind": "text",
+          "label": "A hairless cat with a warm suede-like skin, oversized bat ears, and a personalit…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,line-clamp-2,text-xs\"> [text]"
+        },
+        {
+          "id": "i29",
+          "kind": "text",
+          "label": "Bengal",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-medium\"> [text]"
+        },
+        {
+          "id": "i2a",
+          "kind": "text",
+          "label": "A striking, wild-looking domestic cat breed developed from Asian leopard cats. B…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,line-clamp-2,text-xs\"> [text]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-8\">"
     },
     {
-      "id": "pc",
+      "id": "i2e",
       "x": 16,
-      "y": 480,
+      "y": 4520,
       "axis": "y",
       "items": [
         {
-          "id": "pb",
-          "kind": "box",
-          "label": "Free prep toolsBefore you use any photo-based identifier, check your photo first",
-          "variant": "filled",
+          "id": "i2c",
+          "kind": "text",
+          "label": "Before you use any photo-based identifier, check your photo first.",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Before you use any photo-based identifier, check your photo first."
+        },
+        {
+          "id": "i2d",
+          "kind": "text",
+          "label": "Free prep tools",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl space-y-5\">"
+          "_note": "<p class=\"text-brand,text-sm,font-semibold,tracking-wide,uppercase\"> [text]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-8\">"
     },
     {
-      "id": "pe",
+      "id": "i2p",
       "x": 16,
-      "y": 576,
+      "y": 4672,
       "axis": "y",
       "items": [
         {
-          "id": "pd",
-          "kind": "box",
-          "label": "How It Works1. UploadPick a well-lit photo of your cat. The tool checks quality ",
-          "variant": "filled",
+          "id": "i2f",
+          "kind": "text",
+          "label": "How It Works",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: How It Works"
+        },
+        {
+          "id": "i2g",
+          "kind": "button",
+          "label": "full breed identification methodology",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto max-w-6xl\">"
+          "_note": "<a class=\"text-brand,font-medium,underline,underline-offset-4,hover:text-[#6f3710]\"> [link]"
+        },
+        {
+          "id": "i2h",
+          "kind": "button",
+          "label": "cat breed glossary",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-brand,font-medium,underline,underline-offset-4,hover:text-[#6f3710]\"> [link]"
+        },
+        {
+          "id": "i2i",
+          "kind": "text",
+          "label": "1. Upload",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-bold\"> [text]"
+        },
+        {
+          "id": "i2j",
+          "kind": "text",
+          "label": "Pick a well-lit photo of your cat. The tool checks quality locally before anythi…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i2k",
+          "kind": "text",
+          "label": "2. Analyze",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-bold\"> [text]"
+        },
+        {
+          "id": "i2l",
+          "kind": "text",
+          "label": "Our AI scans 40+ visual markers — coat, color, face shape, body structure — in s…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i2m",
+          "kind": "text",
+          "label": "3. Discover",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-brand,text-sm,font-bold\"> [text]"
+        },
+        {
+          "id": "i2n",
+          "kind": "text",
+          "label": "Get breed clues with confidence scores, not false certainty. More practical than…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-1,text-sm\"> [text]"
+        },
+        {
+          "id": "i2o",
+          "kind": "text",
+          "label": "Want the details? Read our full breed identification methodology. New to cat bre…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-4,text-sm\"> [text]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-8\">"
     },
     {
-      "id": "pg",
+      "id": "i31",
       "x": 16,
-      "y": 672,
+      "y": 5272,
       "axis": "y",
       "items": [
         {
-          "id": "pf",
-          "kind": "box",
-          "label": "Frequently asked questionsWhat a photo can tell you, and what it cannot.Clear ex",
-          "variant": "filled",
+          "id": "i2q",
+          "kind": "text",
+          "label": "What a photo can tell you, and what it cannot.",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: What a photo can tell you, and what it cannot."
+        },
+        {
+          "id": "i2r",
+          "kind": "text",
+          "label": "How do I identify my cat's breed by looking at it?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2s",
+          "kind": "text",
+          "label": "How does a photo-based cat breed estimate work?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2t",
+          "kind": "text",
+          "label": "What kind of photo gives the most useful result?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2u",
+          "kind": "text",
+          "label": "Can a photo identify a mixed-breed cat accurately?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2v",
+          "kind": "text",
+          "label": "Is tabby, tuxedo, calico, or tortoiseshell a breed?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2w",
+          "kind": "text",
+          "label": "Why might two photos of the same cat give different clues?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2x",
+          "kind": "text",
+          "label": "Is this the same as a DNA test or pedigree record?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2y",
+          "kind": "text",
+          "label": "What happens to my cat photo?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i2z",
+          "kind": "text",
+          "label": "Frequently asked questions",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.65fr_1.35fr]\">"
+          "_note": "<p class=\"text-brand,text-sm,font-semibold,tracking-wide,uppercase\"> [text]"
+        },
+        {
+          "id": "i30",
+          "kind": "text",
+          "label": "Clear expectations make breed clues more useful. These answers cover the questio…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-4,max-w-md,leading-7\"> [text]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-10 sm:py-14\">"
     },
     {
-      "id": "pi",
+      "id": "i3b",
       "x": 16,
-      "y": 768,
+      "y": 5928,
       "axis": "y",
       "items": [
         {
-          "id": "ph",
-          "kind": "box",
-          "label": "Help us make the answer more useful.Share a question, correction, or experience ",
-          "variant": "outlined",
+          "id": "i32",
+          "kind": "text",
+          "label": "Help us make the answer more useful.",
           "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Help us make the answer more useful."
+        },
+        {
+          "id": "i33",
+          "kind": "text",
+          "label": "Share a question, correction, or experience with the tool. Every submission is r…",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
           "bold": false,
-          "_note": "<div class=\"border-line-warm mx-auto grid max-w-6xl gap-8 border-t pt-10\">"
+          "_note": "<p class=\"text-muted-foreground,mt-3,max-w-md,leading-7\"> [text]"
+        },
+        {
+          "id": "i34",
+          "kind": "text",
+          "label": "Do not include links, email addresses, or private information.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-xs\"> [text]"
+        },
+        {
+          "id": "i35",
+          "kind": "box",
+          "label": "Links, email addresses, HTML, threats, and spam are blocked.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"\"> [container]"
+        },
+        {
+          "id": "i36",
+          "kind": "box",
+          "label": "Display name (optional)Your feedback0/800Do not include links, email addresses, …",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<form class=\"border-line-warm,bg-surface,relative,space-y-4,rounded-lg\"> [container]"
+        },
+        {
+          "id": "i37",
+          "kind": "box",
+          "label": "Display name (optional)",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<label class=\"text-ink,text-sm,font-medium\"> [container]"
+        },
+        {
+          "id": "i38",
+          "kind": "box",
+          "label": "(optional)",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"text-muted-foreground\"> [container]"
+        },
+        {
+          "id": "i39",
+          "kind": "box",
+          "label": "Your feedback",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<label class=\"text-ink,text-sm,font-medium\"> [container]"
+        },
+        {
+          "id": "i3a",
+          "kind": "box",
+          "label": "0/800",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<span class=\"text-muted-foreground,text-xs\"> [container]"
         }
       ],
-      "_section": "section.px-4",
+      "_section": "<section> .px-4",
       "_note": "Source: <section class=\"px-4 py-10 sm:py-14\">"
+    },
+    {
+      "id": "i3w",
+      "x": 16,
+      "y": 6472,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i3c",
+          "kind": "text",
+          "label": "Cat Breeds We Can Identify",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<section> heading: Cat Breeds We Can Identify"
+        },
+        {
+          "id": "i3d",
+          "kind": "button",
+          "label": "🐱Norwegian Forest Cat",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3e",
+          "kind": "button",
+          "label": "🐱Abyssinian",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3f",
+          "kind": "button",
+          "label": "🐱Russian Blue",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3g",
+          "kind": "button",
+          "label": "🐱Scottish Fold",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3h",
+          "kind": "button",
+          "label": "🐱Persian",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3i",
+          "kind": "button",
+          "label": "🐱British Shorthair",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3j",
+          "kind": "button",
+          "label": "🐱Maine Coon",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3k",
+          "kind": "button",
+          "label": "🐱Siamese",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3l",
+          "kind": "button",
+          "label": "🐱Ragdoll",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3m",
+          "kind": "button",
+          "label": "🐱Bengal",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3n",
+          "kind": "button",
+          "label": "🐱Birman",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3o",
+          "kind": "button",
+          "label": "🐱Sphynx",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3p",
+          "kind": "button",
+          "label": "🐱Devon Rex",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3q",
+          "kind": "button",
+          "label": "🐱Siberian",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3r",
+          "kind": "button",
+          "label": "🐱American Shorthair",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3s",
+          "kind": "button",
+          "label": "🐱Cornish Rex",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3t",
+          "kind": "button",
+          "label": "🐱Exotic Shorthair",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3u",
+          "kind": "button",
+          "label": "🐱Turkish Angora",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        },
+        {
+          "id": "i3v",
+          "kind": "button",
+          "label": "🐱Burmese",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-brand,hover:border-brand,dark:text-brand\"> [link]"
+        }
+      ],
+      "_section": "<section> .border-line-warm",
+      "_note": "Source: <section class=\"border-line-warm bg-surface-muted border-t px-4 py-12\">"
+    },
+    {
+      "id": "i42",
+      "x": 16,
+      "y": 7632,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i3x",
+          "kind": "button",
+          "label": "Follow @tryfurriq",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-ink,hover:border-brand,hover:text-brand\"> [link]"
+        },
+        {
+          "id": "i3y",
+          "kind": "button",
+          "label": "Upvote on Product Hunt",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"border-line-warm,bg-surface,text-ink,hover:border-brand,hover:text-brand\"> [link]"
+        },
+        {
+          "id": "i3z",
+          "kind": "text",
+          "label": "Furriq",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-ink,font-serif,text-2xl,font-semibold,italic\"> [text]"
+        },
+        {
+          "id": "i40",
+          "kind": "text",
+          "label": "Honest cat breed clues — free, private, no sign-up.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-2,text-sm\"> [text]"
+        },
+        {
+          "id": "i41",
+          "kind": "text",
+          "label": "Questions? Reach out on X — we reply to every message.",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<p class=\"text-muted-foreground,mt-6,text-xs\"> [text]"
+        }
+      ],
+      "_section": "<section> .border-line-warm",
+      "_note": "Source: <section class=\"border-line-warm bg-surface-muted border-t px-4 py-14\">"
+    },
+    {
+      "id": "i4n",
+      "x": 16,
+      "y": 7952,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i43",
+          "kind": "button",
+          "label": "Pattern Checker",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i44",
+          "kind": "button",
+          "label": "Photo Coach",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i45",
+          "kind": "button",
+          "label": "Multi-photo Prep",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i46",
+          "kind": "button",
+          "label": "FAQ",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i47",
+          "kind": "button",
+          "label": "Maine Coon",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i48",
+          "kind": "button",
+          "label": "Persian",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i49",
+          "kind": "button",
+          "label": "Siamese",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i4a",
+          "kind": "button",
+          "label": "British Shorthair",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i4b",
+          "kind": "button",
+          "label": "Ragdoll",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i4c",
+          "kind": "button",
+          "label": "Bengal",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i4d",
+          "kind": "button",
+          "label": "Sphynx",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-[#d9d0c4],transition-colors,hover:text-[#c97a2e]\"> [link]"
+        },
+        {
+          "id": "i4e",
+          "kind": "button",
+          "label": "Pricing",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4f",
+          "kind": "button",
+          "label": "Credits",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4g",
+          "kind": "button",
+          "label": "Profile",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4h",
+          "kind": "button",
+          "label": "Blog",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4i",
+          "kind": "button",
+          "label": "About Furriq",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4j",
+          "kind": "button",
+          "label": "Contact Us",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4k",
+          "kind": "button",
+          "label": "Privacy Policy",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4l",
+          "kind": "button",
+          "label": "Terms of Service",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        },
+        {
+          "id": "i4m",
+          "kind": "button",
+          "label": "Refund Policy",
+          "icon": "open_in_new",
+          "icon2": null,
+          "variant": "filled",
+          "bold": false,
+          "_note": "<a class=\"text-sm,text-neutral-400,transition-colors,hover:text-neutral-100\"> [link]"
+        }
+      ],
+      "_section": "<footer> .bg-neutral-950",
+      "_note": "Source: <footer class=\"bg-neutral-950 text-neutral-100\">"
+    },
+    {
+      "id": "i4w",
+      "x": 16,
+      "y": 9112,
+      "axis": "y",
+      "items": [
+        {
+          "id": "i4o",
+          "kind": "text",
+          "label": "How do I identify my cat's breed by looking at it?",
+          "icon": null,
+          "icon2": null,
+          "variant": "tonal",
+          "bold": true,
+          "_note": "<div> heading: How do I identify my cat's breed by looking at it?"
+        },
+        {
+          "id": "i4p",
+          "kind": "text",
+          "label": "How does a photo-based cat breed estimate work?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4q",
+          "kind": "text",
+          "label": "What kind of photo gives the most useful result?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4r",
+          "kind": "text",
+          "label": "Can a photo identify a mixed-breed cat accurately?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4s",
+          "kind": "text",
+          "label": "Is tabby, tuxedo, calico, or tortoiseshell a breed?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4t",
+          "kind": "text",
+          "label": "Why might two photos of the same cat give different clues?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4u",
+          "kind": "text",
+          "label": "Is this the same as a DNA test or pedigree record?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        },
+        {
+          "id": "i4v",
+          "kind": "text",
+          "label": "What happens to my cat photo?",
+          "icon": null,
+          "icon2": null,
+          "variant": "filled",
+          "bold": true,
+          "_note": "<h3 class=\"flex\"> [heading]"
+        }
+      ],
+      "_section": "<div> .flex",
+      "_note": "Source: <div class=\"flex flex-col border-line-warm bg-surface w-full\">"
     }
   ],
   "tags": [
     "imported",
-    "furriq.com"
+    "furriq.com",
+    "real-page"
   ]
 }
