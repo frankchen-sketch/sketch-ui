@@ -4,7 +4,7 @@ import "./globals.css";
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://lnkiai.github.io"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://sketch-ui.pages.dev"),
   title: "Sketch UI",
   description:
     "拖拽拼搭 UI 界面，一键生成 AI 编程 prompt。/ Drag-and-drop UI sketcher that generates AI coding prompts.",
