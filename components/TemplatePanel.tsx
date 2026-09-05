@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Palette, Group } from "@/lib/tokens";
 import {
   PageTemplate,
@@ -9,6 +9,7 @@ import {
   templatesByCategory,
   deleteCustomTemplate,
   BUILTIN_TEMPLATES,
+  loadExternalTemplates,
 } from "@/lib/templates";
 
 const CATEGORY_LABELS: Record<TemplateCategory, { label: string; icon: string }> = {
@@ -28,9 +29,18 @@ interface TemplatePanelProps {
 export function TemplatePanel({ palette: p, activePresetKey, onInsert, onSaveFromCanvas }: TemplatePanelProps) {
   const [filter, setFilter] = useState<TemplateCategory | "all">("all");
   const [search, setSearch] = useState("");
+  const [externalTemplates, setExternalTemplates] = useState<PageTemplate[]>([]);
+
+  useEffect(() => {
+    loadExternalTemplates().then(setExternalTemplates);
+  }, []);
 
   const templates = useMemo(() => {
-    let all = templatesForProject(activePresetKey);
+    // Merge built-in + external + custom, filter by project
+    let all = [...BUILTIN_TEMPLATES, ...externalTemplates];
+    if (activePresetKey) {
+      all = all.filter((t) => t.projectKey === activePresetKey || t.projectKey === null);
+    }
     if (filter !== "all") all = all.filter((t) => t.category === filter);
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -42,7 +52,7 @@ export function TemplatePanel({ palette: p, activePresetKey, onInsert, onSaveFro
       );
     }
     return all;
-  }, [activePresetKey, filter, search]);
+  }, [activePresetKey, filter, search, externalTemplates]);
 
   const grouped = useMemo(() => templatesByCategory(templates), [templates]);
 
