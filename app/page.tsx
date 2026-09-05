@@ -84,6 +84,7 @@ import { PartsPalette } from "@/components/PartsPalette";
 import { PromptPanel } from "@/components/PromptPanel";
 import { PresetSelector } from "@/components/PresetSelector";
 import { TemplatePanel } from "@/components/TemplatePanel";
+import { VisualEditor } from "@/components/VisualEditor";
 import type { ProjectPreset } from "@/lib/presets";
 import { paletteOfPreset, themeOfPreset, presetPromptContext, loadAllPresets } from "@/lib/presets";
 import { GitHubLink, Mode, Toolbar } from "@/components/Toolbar";
@@ -384,6 +385,8 @@ export default function Page() {
   /** the canvas transform eases while the camera glides to or from a screen */
   const [cameraEasing, setCameraEasing] = useState(false);
   const [mode, setMode] = useState<Mode>("select");
+  const [editorMode, setEditorMode] = useState<"canvas" | "visual">("canvas");
+  const [visualPrompt, setVisualPrompt] = useState<string | null>(null);
   const [spaceHeld, setSpaceHeld] = useState(false);
   const [leftOpen, setLeftOpen] = useState(true);
   const [rightOpen, setRightOpen] = useState(true);
@@ -2999,7 +3002,7 @@ export default function Page() {
           </aside>
         )}
 
-        {/* ---- canvas ---- */}
+        {/* ---- canvas / visual editor ---- */}
         <main
           style={{
             flex: 1,
@@ -3008,6 +3011,73 @@ export default function Page() {
             padding: isMobile ? 6 : 8,
           }}
         >
+          {editorMode === "visual" ? (
+            <div
+              style={{
+                position: "absolute",
+                inset: isMobile ? 6 : 8,
+                overflow: "hidden",
+                borderRadius: 24,
+                background: p.surfaceContainerHighest,
+              }}
+            >
+              {/* Back to canvas button */}
+              <button
+                onClick={() => setEditorMode("canvas")}
+                className="m3-press"
+                style={{
+                  position: "absolute",
+                  left: 12,
+                  top: 12,
+                  zIndex: 50,
+                  padding: "6px 12px",
+                  borderRadius: 20,
+                  border: "none",
+                  background: p.primary,
+                  color: p.onPrimary,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                }}
+                title="返回组件画布"
+              >
+                <span className="material-symbols-rounded" style={{ fontSize: 16 }}>
+                  dashboard
+                </span>
+                画布
+              </button>
+              <VisualEditor
+                palette={p}
+                projectKey={activePresetKey}
+                onGeneratePrompt={(changes, pageUrl) => {
+                  const lines: string[] = [];
+                  lines.push(`## 修改请求 — ${new URL(pageUrl || "https://example.com").hostname}`);
+                  lines.push("");
+                  lines.push(`页面: ${pageUrl}`);
+                  lines.push(`修改数量: ${changes.length}`);
+                  lines.push("");
+                  for (const c of changes) {
+                    lines.push(`### 元素: \`<${c.element.tag}>\``);
+                    lines.push(`- CSS 选择器: \`${c.element.cssSelector}\``);
+                    if (c.element.id) lines.push(`- ID: #${c.element.id}`);
+                    if (c.element.classes.length) lines.push(`- 类名: .${c.element.classes.join(".")}`);
+                    if (c.element.text) lines.push(`- 当前文本: "${c.element.text.slice(0, 80)}"`);
+                    lines.push(`- 位置: ${c.element.rect.x},${c.element.rect.y} (${c.element.rect.w}×${c.element.rect.h})`);
+                    lines.push(`- **修改: ${c.description}**`);
+                    lines.push("");
+                  }
+                  const prompt = lines.join("\n");
+                  setVisualPrompt(prompt);
+                  setRightTab("prompt");
+                  navigator.clipboard.writeText(prompt).catch(() => {});
+                }}
+              />
+            </div>
+          ) : (
           <div
             ref={canvasRef}
             onPointerDown={onCanvasPointerDown}
@@ -3022,6 +3092,33 @@ export default function Page() {
               touchAction: "none",
             }}
           >
+            {/* Editor mode toggle */}
+            <div style={{ position: "absolute", left: 12, top: 12, zIndex: 50, display: "flex", gap: 4 }}>
+              <button
+                onClick={() => setEditorMode("visual")}
+                className="m3-press"
+                style={{
+                  padding: "6px 12px",
+                  borderRadius: 20,
+                  border: "none",
+                  background: p.surfaceContainerHigh,
+                  color: p.onSurfaceVariant,
+                  fontSize: 11,
+                  fontWeight: 600,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                }}
+                title="切换到可视化编辑"
+              >
+                <span className="material-symbols-rounded" style={{ fontSize: 16 }}>
+                  edit_square
+                </span>
+                编辑页面
+              </button>
+            </div>
             <div
               style={{
                 position: "absolute",
@@ -3319,6 +3416,7 @@ export default function Page() {
               )}
             </div>
           </div>
+          )}
 
           <Toolbar
             p={p}
@@ -3567,6 +3665,45 @@ export default function Page() {
                   onGroup={groupSelected}
                   onUngroup={ungroupSelected}
                 />
+              ) : visualPrompt ? (
+                <div style={{ padding: 16, height: "100%", overflowY: "auto" }}>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: p.onSurfaceVariant, marginBottom: 8 }}>
+                    可视化编辑 Prompt
+                  </div>
+                  <pre style={{
+                    fontSize: 11,
+                    lineHeight: 1.6,
+                    color: p.onSurface,
+                    whiteSpace: "pre-wrap",
+                    wordBreak: "break-word",
+                    fontFamily: "ui-monospace, monospace",
+                    background: p.surfaceContainerLow,
+                    padding: 12,
+                    borderRadius: 8,
+                    border: `1px solid ${p.outlineVariant}`,
+                    maxHeight: "calc(100% - 80px)",
+                    overflowY: "auto",
+                  }}>
+                    {visualPrompt}
+                  </pre>
+                  <button
+                    onClick={() => { navigator.clipboard.writeText(visualPrompt).catch(() => {}); }}
+                    className="m3-press"
+                    style={{
+                      marginTop: 8,
+                      padding: "6px 16px",
+                      borderRadius: 20,
+                      border: "none",
+                      background: p.primary,
+                      color: p.onPrimary,
+                      fontSize: 12,
+                      fontWeight: 600,
+                      cursor: "pointer",
+                    }}
+                  >
+                    复制到剪贴板
+                  </button>
+                </div>
               ) : (
                 <PromptPanel
                   doc={doc}
