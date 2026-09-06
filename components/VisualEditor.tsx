@@ -37,7 +37,7 @@ export function VisualEditor({ pageUrl, onBack }: VisualEditorProps) {
       const iframe = iframeRef.current;
       const doc = iframe?.contentDocument;
       if (!doc) {
-        setIframeError("无法访问 iframe 内容（跨域限制）");
+        setIframeError("无法访问 iframe 内容（跨域限制）。请确保通过代理加载。");
         return;
       }
 
@@ -298,7 +298,7 @@ export function VisualEditor({ pageUrl, onBack }: VisualEditorProps) {
 
         <iframe
           ref={iframeRef}
-          src={pageUrl}
+          src={`/api/proxy/?url=${encodeURIComponent(pageUrl)}`}
           onLoad={handleIframeLoad}
           style={{ width: "100%", height: "100%", border: "none" }}
           sandbox="allow-same-origin allow-scripts allow-forms"
