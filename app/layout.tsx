@@ -1,19 +1,46 @@
 import type { Metadata, Viewport } from "next";
+import "./globals.css";
+
+const BASE = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
-  title: "修改 Prompt 生成器",
-  description: "输入 CSS 选择器和修改描述，一键生成给 Hermes 的结构化 prompt",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://sketch-ui.pages.dev"),
+  title: "Sketch UI",
+  description:
+    "拖拽拼搭 UI 界面，一键生成 AI 编程 prompt。/ Drag-and-drop UI sketcher that generates AI coding prompts.",
+  openGraph: {
+    title: "Sketch UI",
+    description: "拖拽拼搭 UI 界面，一键生成 AI 编程 prompt。",
+    images: [`${BASE}/og.png`],
+    type: "website",
+  },
+  twitter: { card: "summary_large_image", images: [`${BASE}/og.png`] },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh">
-      <body style={{ margin: 0, padding: 0 }}>{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400..700,0..1,0&display=block"
+        />
+      </head>
+      <body style={{ fontFamily: "Roboto, system-ui, sans-serif" }}>{children}</body>
     </html>
   );
 }
