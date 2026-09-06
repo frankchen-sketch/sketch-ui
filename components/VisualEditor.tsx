@@ -188,6 +188,28 @@ export function VisualEditor({ pageUrl, onBack }: VisualEditorProps) {
             }
           }, true);
 
+          // Remove common intro/loading overlays
+          function removeOverlays() {
+            var allDivs = document.querySelectorAll('div')
+            for (var i = allDivs.length - 1; i >= 0; i--) {
+              var div = allDivs[i]
+              var text = div.textContent || ''
+              var computed = window.getComputedStyle(div)
+              var pos = computed.position
+              var z = parseInt(computed.zIndex) || 0
+              // Match overlays: fixed/absolute, high z-index, contains "Loading" or "Skip Intro"
+              if ((pos === 'fixed' || pos === 'absolute') && z > 50) {
+                if (text.includes('Loading') || text.includes('Skip Intro') || text.includes('跳过')) {
+                  div.remove()
+                }
+              }
+            }
+          }
+          // Run immediately and after a delay (for late-rendered overlays)
+          removeOverlays()
+          setTimeout(removeOverlays, 1000)
+          setTimeout(removeOverlays, 3000)
+
           window.parent.postMessage({ type: 'inspector-ready' }, '*');
         })();
       `;
