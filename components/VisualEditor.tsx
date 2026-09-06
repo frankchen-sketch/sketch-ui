@@ -1,481 +1,329 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Palette } from "@/lib/tokens";
-
-interface SelectedElement {
-  tag: string;
-  id: string;
-  classes: string[];
-  text: string;
-  cssSelector: string;
-  xpath: string;
-  rect: { x: number; y: number; w: number; h: number };
-  parentTag: string;
-  parentClasses: string[];
-}
+import { ElementInfo } from "@/lib/inspector/core";
+import { startInspector, stopInspector } from "@/lib/inspector/overlay";
+import { InspectorPanel } from "./InspectorPanel";
 
 interface Change {
-  element: SelectedElement;
+  id: number;
+  element: ElementInfo;
   description: string;
-  timestamp: number;
 }
 
 interface VisualEditorProps {
-  palette: Palette;
-  projectKey: string | null;
-  onGeneratePrompt: (changes: Change[], url: string) => void;
+  pageUrl: string;
+  onBack: () => void;
 }
 
-const INJECT_SCRIPT = `
-(function() {
-  if (window.__sketchUIInjected) return;
-  window.__sketchUIInjected = true;
-
-  let selectedEl = null;
-  let overlay = null;
-  let label = null;
-
-  function createOverlay() {
-    overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;pointer-events:none;z-index:2147483646;border:2px solid #6750A4;background:rgba(103,80,164,0.1);transition:all 0.1s ease;';
-    document.body.appendChild(overlay);
-
-    label = document.createElement('div');
-    label.style.cssText = 'position:fixed;z-index:2147483647;background:#6750A4;color:white;padding:4px 8px;border-radius:4px;font:12px/1.4 system-ui;pointer-events:none;max-width:300px;word-break:break-all;box-shadow:0 2px 8px rgba(0,0,0,0.3);';
-    document.body.appendChild(label);
-  }
-
-  function getCssSelector(el) {
-    if (el.id) return '#' + el.id;
-    let path = [];
-    while (el && el.nodeType === 1) {
-      let selector = el.tagName.toLowerCase();
-      if (el.id) { path.unshift('#' + el.id); break; }
-      if (el.className && typeof el.className === 'string') {
-        const cls = el.className.trim().split(/\\s+/).filter(c => !c.startsWith('__') && c.length < 30).slice(0, 2).join('.');
-        if (cls) selector += '.' + cls;
-      }
-      const parent = el.parentElement;
-      if (parent) {
-        const siblings = Array.from(parent.children).filter(c => c.tagName === el.tagName);
-        if (siblings.length > 1) {
-          const idx = siblings.indexOf(el) + 1;
-          selector += ':nth-of-type(' + idx + ')';
-        }
-      }
-      path.unshift(selector);
-      el = el.parentElement;
-      if (path.length >= 4) break;
-    }
-    return path.join(' > ');
-  }
-
-  function getXPath(el) {
-    if (el.id) return '//*[@id="' + el.id + '"]';
-    let path = [];
-    while (el && el.nodeType === 1) {
-      let idx = 1;
-      let sib = el.previousSibling;
-      while (sib) { if (sib.nodeType === 1 && sib.tagName === el.tagName) idx++; sib = sib.previousSibling; }
-      path.unshift(el.tagName.toLowerCase() + '[' + idx + ']');
-      el = el.parentElement;
-      if (path.length >= 5) break;
-    }
-    return '/' + path.join('/');
-  }
-
-  function getElementInfo(el) {
-    const rect = el.getBoundingClientRect();
-    const text = (el.innerText || el.textContent || '').trim().slice(0, 120);
-    return {
-      tag: el.tagName.toLowerCase(),
-      id: el.id || '',
-      classes: (el.className || '').toString().trim().split(/\\s+/).filter(Boolean).slice(0, 8),
-      text: text,
-      cssSelector: getCssSelector(el),
-      xpath: getXPath(el),
-      rect: { x: Math.round(rect.x), y: Math.round(rect.y), w: Math.round(rect.width), h: Math.round(rect.height) },
-      parentTag: el.parentElement?.tagName?.toLowerCase() || '',
-      parentClasses: (el.parentElement?.className || '').toString().trim().split(/\\s+/).filter(Boolean).slice(0, 4),
-    };
-  }
-
-  function highlight(el) {
-    if (!overlay) createOverlay();
-    const rect = el.getBoundingClientRect();
-    overlay.style.left = rect.left + 'px';
-    overlay.style.top = rect.top + 'px';
-    overlay.style.width = rect.width + 'px';
-    overlay.style.height = rect.height + 'px';
-    overlay.style.display = 'block';
-
-    const info = getElementInfo(el);
-    const tag = info.tag + (info.id ? '#' + info.id : '') + (info.classes.length ? '.' + info.classes.slice(0, 2).join('.') : '');
-    const preview = info.text.slice(0, 50) + (info.text.length > 50 ? '…' : '');
-    label.textContent = tag + (preview ? ' — ' + preview : '');
-    label.style.left = Math.min(rect.left, window.innerWidth - 320) + 'px';
-    label.style.top = (rect.top - 30) + 'px';
-    label.style.display = 'block';
-  }
-
-  function hideOverlay() {
-    if (overlay) overlay.style.display = 'none';
-    if (label) label.style.display = 'none';
-  }
-
-  // Hover: highlight
-  document.addEventListener('mouseover', function(e) {
-    if (e.target === overlay || e.target === label) return;
-    if (e.target.closest('[data-sketch-ui]')) return;
-    highlight(e.target);
-  }, true);
-
-  document.addEventListener('mouseout', function(e) {
-    if (e.target === overlay || e.target === label) return;
-    hideOverlay();
-  }, true);
-
-  // Click: select element and send to parent
-  document.addEventListener('click', function(e) {
-    if (e.target === overlay || e.target === label) return;
-    if (e.target.closest('[data-sketch-ui]')) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    selectedEl = e.target;
-    highlight(selectedEl);
-
-    const info = getElementInfo(selectedEl);
-    window.parent.postMessage({ type: 'sketch-ui-element-selected', element: info }, '*');
-  }, true);
-
-  // Escape to deselect
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      selectedEl = null;
-      hideOverlay();
-      window.parent.postMessage({ type: 'sketch-ui-element-deselected' }, '*');
-    }
-  }, true);
-})();
-`;
-
-export function VisualEditor({ palette: p, projectKey, onGeneratePrompt }: VisualEditorProps) {
+export function VisualEditor({ pageUrl, onBack }: VisualEditorProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [url, setUrl] = useState("");
   const [loaded, setLoaded] = useState(false);
-  const [selectedElement, setSelectedElement] = useState<SelectedElement | null>(null);
+  const [hovered, setHovered] = useState<ElementInfo | null>(null);
+  const [selected, setSelected] = useState<ElementInfo | null>(null);
   const [changes, setChanges] = useState<Change[]>([]);
-  const [changeDesc, setChangeDesc] = useState("");
-  const [showHelp, setShowHelp] = useState(true);
+  const [prompt, setPrompt] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [iframeError, setIframeError] = useState<string | null>(null);
+  const cleanupRef = useRef<(() => void) | null>(null);
+  const nextIdRef = useRef(1);
 
-  // Preset URLs
-  const presetUrls: Record<string, { label: string; url: string }> = {
-    furriq: { label: "Furriq (localhost:3000)", url: "http://localhost:3000" },
-    gridpaw: { label: "GridPaw (localhost:4321)", url: "http://localhost:4321" },
-  };
+  // Inject inspector into iframe when loaded
+  const handleIframeLoad = useCallback(() => {
+    setLoaded(true);
+    setIframeError(null);
+
+    try {
+      const iframe = iframeRef.current;
+      const doc = iframe?.contentDocument;
+      if (!doc) {
+        setIframeError("无法访问 iframe 内容（跨域限制）");
+        return;
+      }
+
+      // Inject the inspector script into the iframe
+      const script = doc.createElement('script');
+      script.textContent = `
+        (function() {
+          if (window.__inspectorInjected) return;
+          window.__inspectorInjected = true;
+
+          function deepElementFromPoint(x, y) {
+            var el = document.elementFromPoint(x, y);
+            if (!el) return null;
+            function crawlShadows(node) {
+              if (node.shadowRoot) {
+                var potential = node.shadowRoot.elementFromPoint(x, y);
+                if (potential === node) return node;
+                if (potential && potential.shadowRoot) return crawlShadows(potential);
+                return potential || node;
+              }
+              return node;
+            }
+            return crawlShadows(el);
+          }
+
+          function isOverlay(el) {
+            return el && el.getAttribute && el.getAttribute('data-inspector-overlay');
+          }
+
+          function getClassList(el) {
+            var cls = el.className;
+            if (!cls || typeof cls !== 'string') return [];
+            return cls.trim().split(/\\s+/).filter(function(c) {
+              return c.length >= 2 && c.length <= 40 && !/^_/.test(c) && !/^[a-z0-9]{6,}$/i.test(c);
+            }).slice(0, 5);
+          }
+
+          function generateSelector(el) {
+            if (el.id) return '#' + el.id;
+            var tag = el.tagName.toLowerCase();
+            var classes = getClassList(el);
+            if (classes.length > 0) return tag + '.' + classes.slice(0, 3).join('.');
+            return tag;
+          }
+
+          var DESIRED_PROPS = {
+            color: 'rgb(0, 0, 0)', backgroundColor: 'rgba(0, 0, 0, 0)',
+            fontSize: '16px', fontWeight: '400', display: 'block',
+            padding: '0px', margin: '0px', borderRadius: '0px',
+            fontFamily: 'auto', opacity: '1', position: 'static',
+          };
+
+          function getStyles(el) {
+            var computed = window.getComputedStyle(el);
+            var result = [];
+            for (var prop in DESIRED_PROPS) {
+              var value = computed.getPropertyValue(prop);
+              if (value && value !== DESIRED_PROPS[prop]) {
+                result.push({ prop: prop, value: value });
+              }
+            }
+            return result.sort(function(a, b) { return a.prop.localeCompare(b.prop); });
+          }
+
+          function getElementInfo(el) {
+            var rect = el.getBoundingClientRect();
+            var text = el.innerText || el.textContent || '';
+            return {
+              tag: el.tagName.toLowerCase(),
+              id: el.id || '',
+              classes: getClassList(el),
+              text: text.trim().slice(0, 150),
+              selector: generateSelector(el),
+              rect: { x: Math.round(rect.x), y: Math.round(rect.y), w: Math.round(rect.width), h: Math.round(rect.height) },
+              styles: getStyles(el),
+              parentTag: el.parentElement ? el.parentElement.tagName.toLowerCase() : '',
+              parentClasses: getClassList(el.parentElement || document.body),
+            };
+          }
+
+          // Overlays
+          var hoverOverlay = document.createElement('div');
+          hoverOverlay.setAttribute('data-inspector-overlay', 'hover');
+          hoverOverlay.style.cssText = 'position:fixed;pointer-events:none;z-index:2147483646;border:2px solid #4f46e5;background:rgba(79,70,229,0.08);transition:all 0.08s ease;display:none;border-radius:2px;';
+          document.body.appendChild(hoverOverlay);
+
+          var hoverLabel = document.createElement('div');
+          hoverLabel.setAttribute('data-inspector-overlay', 'hover-label');
+          hoverLabel.style.cssText = 'position:fixed;z-index:2147483647;pointer-events:none;background:#4f46e5;color:white;padding:3px 8px;border-radius:4px;font:11px/1.4 system-ui,sans-serif;max-width:280px;word-break:break-all;box-shadow:0 2px 6px rgba(0,0,0,0.25);display:none;';
+          document.body.appendChild(hoverLabel);
+
+          var selectOverlay = document.createElement('div');
+          selectOverlay.setAttribute('data-inspector-overlay', 'select');
+          selectOverlay.style.cssText = 'position:fixed;pointer-events:none;z-index:2147483645;border:2px solid #7c3aed;background:rgba(124,58,237,0.1);display:none;border-radius:2px;';
+          document.body.appendChild(selectOverlay);
+
+          function showHover(el) {
+            var rect = el.getBoundingClientRect();
+            hoverOverlay.style.left = rect.left + 'px';
+            hoverOverlay.style.top = rect.top + 'px';
+            hoverOverlay.style.width = rect.width + 'px';
+            hoverOverlay.style.height = rect.height + 'px';
+            hoverOverlay.style.display = 'block';
+            var tag = el.tagName.toLowerCase();
+            var id = el.id ? '#' + el.id : '';
+            var cls = (el.className && typeof el.className === 'string') ? '.' + el.className.trim().split(/\\s+/).slice(0, 2).join('.') : '';
+            hoverLabel.textContent = tag + id + cls;
+            hoverLabel.style.left = Math.min(rect.left, window.innerWidth - 300) + 'px';
+            hoverLabel.style.top = (rect.top - 26) + 'px';
+            hoverLabel.style.display = 'block';
+          }
+
+          function hideHover() {
+            hoverOverlay.style.display = 'none';
+            hoverLabel.style.display = 'none';
+          }
+
+          function showSelect(info) {
+            selectOverlay.style.left = info.rect.x + 'px';
+            selectOverlay.style.top = info.rect.y + 'px';
+            selectOverlay.style.width = info.rect.w + 'px';
+            selectOverlay.style.height = info.rect.h + 'px';
+            selectOverlay.style.display = 'block';
+          }
+
+          document.addEventListener('mousemove', function(e) {
+            var el = deepElementFromPoint(e.clientX, e.clientY);
+            if (!el || isOverlay(el)) { hideHover(); return; }
+            showHover(el);
+            window.parent.postMessage({ type: 'inspector-hover', element: getElementInfo(el) }, '*');
+          }, true);
+
+          document.addEventListener('click', function(e) {
+            var el = deepElementFromPoint(e.clientX, e.clientY);
+            if (!el || isOverlay(el)) return;
+            e.preventDefault();
+            e.stopPropagation();
+            var info = getElementInfo(el);
+            showSelect(info);
+            window.parent.postMessage({ type: 'inspector-select', element: info }, '*');
+          }, true);
+
+          document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              hideHover();
+              selectOverlay.style.display = 'none';
+              window.parent.postMessage({ type: 'inspector-deselect' }, '*');
+            }
+          }, true);
+
+          window.parent.postMessage({ type: 'inspector-ready' }, '*');
+        })();
+      `;
+      doc.head.appendChild(script);
+    } catch (e) {
+      setIframeError("注入检查器失败: " + String(e));
+    }
+  }, []);
 
   // Listen for messages from iframe
   useEffect(() => {
     const handler = (e: MessageEvent) => {
-      if (e.data?.type === "sketch-ui-element-selected") {
-        setSelectedElement(e.data.element);
-        setShowHelp(false);
-      } else if (e.data?.type === "sketch-ui-element-deselected") {
-        setSelectedElement(null);
+      if (e.data?.type === 'inspector-hover') {
+        setHovered(e.data.element);
+      } else if (e.data?.type === 'inspector-select') {
+        setSelected(e.data.element);
+      } else if (e.data?.type === 'inspector-deselect') {
+        setSelected(null);
+      } else if (e.data?.type === 'inspector-ready') {
+        setIframeError(null);
       }
     };
-    window.addEventListener("message", handler);
-    return () => window.removeEventListener("message", handler);
+    window.addEventListener('message', handler);
+    return () => window.removeEventListener('message', handler);
   }, []);
 
-  // Inject script when iframe loads
-  const handleIframeLoad = useCallback(() => {
-    setLoaded(true);
-    try {
-      const iframe = iframeRef.current;
-      if (iframe?.contentWindow) {
-        (iframe.contentWindow as any).eval(INJECT_SCRIPT);
-      }
-    } catch (e) {
-      console.log("Could not inject script (cross-origin):", e);
-    }
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => { cleanupRef.current?.(); };
   }, []);
 
-  const loadUrl = () => {
-    if (!url.trim()) return;
-    setLoaded(false);
-    setSelectedElement(null);
-    // For localhost URLs, we need the user to ensure CORS allows iframe
-    const iframe = iframeRef.current;
-    if (iframe) {
-      iframe.src = url.trim();
-    }
+  const addChange = (element: ElementInfo, description: string) => {
+    setChanges((prev) => [...prev, { id: nextIdRef.current++, element, description }]);
+    setSelected(null);
   };
 
-  const addChange = () => {
-    if (!selectedElement || !changeDesc.trim()) return;
-    const change: Change = {
-      element: selectedElement,
-      description: changeDesc.trim(),
-      timestamp: Date.now(),
-    };
-    setChanges((prev) => [...prev, change]);
-    setChangeDesc("");
-    setSelectedElement(null);
-  };
-
-  const removeChange = (idx: number) => {
-    setChanges((prev) => prev.filter((_, i) => i !== idx));
+  const removeChange = (id: number) => {
+    setChanges((prev) => prev.filter((c) => c.id !== id));
   };
 
   const generatePrompt = () => {
     if (changes.length === 0) return;
-    onGeneratePrompt(changes, url);
+    const lines: string[] = [];
+    lines.push(`# 修改请求`);
+    lines.push("");
+    if (pageUrl) lines.push(`**页面:** ${pageUrl}`);
+    lines.push(`**修改数量:** ${changes.length}`);
+    lines.push("");
+    for (let i = 0; i < changes.length; i++) {
+      const c = changes[i];
+      lines.push(`### 修改 ${i + 1}`);
+      lines.push(`- **CSS 选择器:** \`${c.element.selector}\``);
+      if (c.element.text) lines.push(`- **当前内容:** "${c.element.text.slice(0, 80)}"`);
+      if (c.element.styles.length > 0) {
+        lines.push(`- **当前样式:** ${c.element.styles.slice(0, 5).map(s => `${s.prop}: ${s.value}`).join(', ')}`);
+      }
+      lines.push(`- **修改:** ${c.description}`);
+      lines.push("");
+    }
+    lines.push(`请逐个修改以上元素，保持页面整体风格一致。`);
+    const result = lines.join("\n");
+    setPrompt(result);
+    navigator.clipboard.writeText(result).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }).catch(() => {});
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", overflow: "hidden" }}>
-      {/* URL bar */}
-      <div style={{ padding: "8px 8px 4px", flexShrink: 0 }}>
-        <div style={{ display: "flex", gap: 4 }}>
-          <input
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="输入页面 URL（如 http://localhost:3000）"
-            style={{
-              flex: 1,
-              padding: "6px 10px",
-              borderRadius: 8,
-              border: `1px solid ${p.outlineVariant}`,
-              background: p.surfaceContainerLow,
-              color: p.onSurface,
-              fontSize: 12,
-              outline: "none",
-              boxSizing: "border-box",
-            }}
-            onKeyDown={(e) => e.key === "Enter" && loadUrl()}
-          />
-          <button
-            onClick={loadUrl}
-            disabled={!url.trim()}
-            className="m3-press"
-            style={{
-              padding: "6px 12px",
-              borderRadius: 8,
-              border: "none",
-              background: url.trim() ? p.primary : p.surfaceContainerHighest,
-              color: url.trim() ? p.onPrimary : p.onSurfaceVariant,
-              fontSize: 12,
-              fontWeight: 600,
-              cursor: url.trim() ? "pointer" : "default",
-            }}
-          >
-            加载
-          </button>
-        </div>
+    <div style={{ display: "flex", height: "100%", overflow: "hidden" }}>
+      {/* Iframe area */}
+      <div style={{ flex: 1, position: "relative", background: "#f0f0f0" }}>
+        {/* Back button */}
+        <button
+          onClick={onBack}
+          style={{
+            position: "absolute", left: 12, top: 12, zIndex: 100,
+            padding: "6px 14px", borderRadius: 8, border: "none",
+            background: "#4f46e5", color: "white", fontSize: 12,
+            fontWeight: 600, cursor: "pointer", boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+          }}
+        >
+          ← 返回画布
+        </button>
 
-        {/* Quick preset URLs */}
-        {projectKey && presetUrls[projectKey] && (
-          <button
-            onClick={() => { setUrl(presetUrls[projectKey].url); }}
-            className="m3-press"
-            style={{
-              marginTop: 4,
-              padding: "4px 8px",
-              borderRadius: 6,
-              border: `1px solid ${p.outlineVariant}`,
-              background: "transparent",
-              color: p.primary,
-              fontSize: 11,
-              cursor: "pointer",
-              width: "100%",
-              textAlign: "left",
-            }}
-          >
-            ⚡ {presetUrls[projectKey].label}
-          </button>
-        )}
-      </div>
-
-      {/* Iframe */}
-      <div style={{ flex: 1, position: "relative", background: p.surfaceContainerHighest }}>
-        {!loaded && (
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              display: "grid",
-              placeItems: "center",
-              color: p.onSurfaceVariant,
-              fontSize: 13,
-              textAlign: "center",
-              padding: 20,
-            }}
-          >
-            {url ? "加载中..." : "输入 URL 并点击加载，然后点击页面元素选中它"}
+        {/* Loading / Error */}
+        {!loaded && !iframeError && (
+          <div style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "#888", fontSize: 14 }}>
+            加载 {pageUrl}...
           </div>
         )}
+        {iframeError && (
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center", gap: 12, color: "#666", fontSize: 14, padding: 40, textAlign: "center",
+          }}>
+            <div style={{ fontSize: 48 }}>🔒</div>
+            <div style={{ fontWeight: 600, color: "#333" }}>{iframeError}</div>
+            <div style={{ fontSize: 12, color: "#999", maxWidth: 400, lineHeight: 1.6 }}>
+              大多数网站禁止被 iframe 嵌入（CSP frame-ancestors 限制）。
+              <br /><br />
+              <strong>可用方案：</strong>
+              <br />• 加载本地开发服务器（localhost 无此限制）
+              <br />• 在 Chrome DevTools 检查元素，手动输入选择器
+            </div>
+          </div>
+        )}
+
         <iframe
           ref={iframeRef}
+          src={pageUrl}
           onLoad={handleIframeLoad}
-          style={{
-            width: "100%",
-            height: "100%",
-            border: "none",
-            display: loaded ? "block" : "none",
-          }}
+          style={{ width: "100%", height: "100%", border: "none" }}
           sandbox="allow-same-origin allow-scripts allow-forms"
         />
       </div>
 
-      {/* Selected element info */}
-      {selectedElement && (
-        <div
-          style={{
-            padding: "6px 8px",
-            borderTop: `1px solid ${p.outlineVariant}`,
-            background: p.primaryContainer,
-            flexShrink: 0,
+      {/* Inspector sidebar */}
+      <div style={{ width: 280, borderLeft: "1px solid #e5e5e5", background: "white", flexShrink: 0 }}>
+        <InspectorPanel
+          hovered={hovered}
+          selected={selected}
+          changes={changes}
+          onAddChange={addChange}
+          onRemoveChange={removeChange}
+          onGenerate={generatePrompt}
+          pageUrl={pageUrl}
+          generatedPrompt={prompt}
+          onCopy={() => {
+            if (prompt) navigator.clipboard.writeText(prompt);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
           }}
-        >
-          <div style={{ fontSize: 11, fontWeight: 600, color: p.onPrimaryContainer, marginBottom: 4 }}>
-            选中元素
-          </div>
-          <div style={{ fontSize: 10, color: p.onPrimaryContainer, fontFamily: "monospace", lineHeight: 1.4 }}>
-            {`<${selectedElement.tag}>`}{selectedElement.id ? ` #${selectedElement.id}` : ""}{selectedElement.classes.length ? ` .${selectedElement.classes.slice(0, 3).join(".")}` : ""}
-          </div>
-          {selectedElement.text && (
-            <div style={{ fontSize: 10, color: p.onPrimaryContainer, marginTop: 2, opacity: 0.8 }}>
-              "{selectedElement.text.slice(0, 60)}{selectedElement.text.length > 60 ? "…" : ""}"
-            </div>
-          )}
-          <div style={{ display: "flex", gap: 4, marginTop: 6 }}>
-            <input
-              value={changeDesc}
-              onChange={(e) => setChangeDesc(e.target.value)}
-              placeholder="描述要做的修改..."
-              style={{
-                flex: 1,
-                padding: "4px 8px",
-                borderRadius: 6,
-                border: `1px solid ${p.outlineVariant}`,
-                background: p.surface,
-                color: p.onSurface,
-                fontSize: 11,
-                outline: "none",
-              }}
-              onKeyDown={(e) => e.key === "Enter" && addChange()}
-            />
-            <button
-              onClick={addChange}
-              disabled={!changeDesc.trim()}
-              className="m3-press"
-              style={{
-                padding: "4px 10px",
-                borderRadius: 6,
-                border: "none",
-                background: changeDesc.trim() ? p.primary : p.surfaceContainerHighest,
-                color: changeDesc.trim() ? p.onPrimary : p.onSurfaceVariant,
-                fontSize: 11,
-                fontWeight: 600,
-                cursor: changeDesc.trim() ? "pointer" : "default",
-              }}
-            >
-              添加
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Changes list */}
-      {changes.length > 0 && (
-        <div
-          style={{
-            padding: "6px 8px",
-            borderTop: `1px solid ${p.outlineVariant}`,
-            background: p.surfaceContainerLow,
-            flexShrink: 0,
-            maxHeight: 200,
-            overflowY: "auto",
-          }}
-        >
-          <div style={{ fontSize: 11, fontWeight: 600, color: p.onSurfaceVariant, marginBottom: 4 }}>
-            已标记 {changes.length} 处修改
-          </div>
-          {changes.map((c, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "3px 0",
-                fontSize: 10,
-                color: p.onSurface,
-                borderBottom: `1px solid ${p.outlineVariant}`,
-              }}
-            >
-              <span style={{ fontFamily: "monospace", color: p.primary, flexShrink: 0 }}>
-                {`<${c.element.tag}>`}
-              </span>
-              <span style={{ flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {c.description}
-              </span>
-              <button
-                onClick={() => removeChange(i)}
-                style={{
-                  border: "none",
-                  background: "none",
-                  color: p.error,
-                  cursor: "pointer",
-                  fontSize: 14,
-                  padding: "0 2px",
-                  lineHeight: 1,
-                }}
-              >
-                ×
-              </button>
-            </div>
-          ))}
-          <button
-            onClick={generatePrompt}
-            className="m3-press"
-            style={{
-              width: "100%",
-              marginTop: 6,
-              padding: "6px 12px",
-              borderRadius: 8,
-              border: "none",
-              background: p.primary,
-              color: p.onPrimary,
-              fontSize: 11,
-              fontWeight: 600,
-              cursor: "pointer",
-            }}
-          >
-            生成修改 Prompt ({changes.length} 处)
-          </button>
-        </div>
-      )}
-
-      {/* Help text */}
-      {showHelp && !selectedElement && changes.length === 0 && (
-        <div
-          style={{
-            padding: "8px",
-            fontSize: 10,
-            color: p.onSurfaceVariant,
-            lineHeight: 1.5,
-            textAlign: "center",
-            borderTop: `1px solid ${p.outlineVariant}`,
-          }}
-        >
-          💡 加载页面后，鼠标悬停高亮元素，点击选中，描述修改，最后生成 prompt
-        </div>
-      )}
+          copied={copied}
+        />
+      </div>
     </div>
   );
 }

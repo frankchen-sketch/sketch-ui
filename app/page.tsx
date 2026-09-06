@@ -386,7 +386,7 @@ export default function Page() {
   const [cameraEasing, setCameraEasing] = useState(false);
   const [mode, setMode] = useState<Mode>("select");
   const [editorMode, setEditorMode] = useState<"canvas" | "visual">("canvas");
-  const [visualPrompt, setVisualPrompt] = useState<string | null>(null);
+  const [visualUrl, setVisualUrl] = useState("");
   const [spaceHeld, setSpaceHeld] = useState(false);
   const [leftOpen, setLeftOpen] = useState(true);
   const [rightOpen, setRightOpen] = useState(true);
@@ -3018,64 +3018,87 @@ export default function Page() {
                 inset: isMobile ? 6 : 8,
                 overflow: "hidden",
                 borderRadius: 24,
-                background: p.surfaceContainerHighest,
+                background: "#fff",
               }}
             >
-              {/* Back to canvas button */}
-              <button
-                onClick={() => setEditorMode("canvas")}
-                className="m3-press"
-                style={{
-                  position: "absolute",
-                  left: 12,
-                  top: 12,
-                  zIndex: 50,
-                  padding: "6px 12px",
-                  borderRadius: 20,
-                  border: "none",
-                  background: p.primary,
-                  color: p.onPrimary,
-                  fontSize: 11,
-                  fontWeight: 600,
-                  cursor: "pointer",
+              {visualUrl ? (
+                <VisualEditor
+                  pageUrl={visualUrl}
+                  onBack={() => { setEditorMode("canvas"); setVisualUrl(""); }}
+                />
+              ) : (
+                /* URL input form */
+                <div style={{
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
-                  gap: 4,
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                }}
-                title="返回组件画布"
-              >
-                <span className="material-symbols-rounded" style={{ fontSize: 16 }}>
-                  dashboard
-                </span>
-                画布
-              </button>
-              <VisualEditor
-                palette={p}
-                projectKey={activePresetKey}
-                onGeneratePrompt={(changes, pageUrl) => {
-                  const lines: string[] = [];
-                  lines.push(`## 修改请求 — ${new URL(pageUrl || "https://example.com").hostname}`);
-                  lines.push("");
-                  lines.push(`页面: ${pageUrl}`);
-                  lines.push(`修改数量: ${changes.length}`);
-                  lines.push("");
-                  for (const c of changes) {
-                    lines.push(`### 元素: \`<${c.element.tag}>\``);
-                    lines.push(`- CSS 选择器: \`${c.element.cssSelector}\``);
-                    if (c.element.id) lines.push(`- ID: #${c.element.id}`);
-                    if (c.element.classes.length) lines.push(`- 类名: .${c.element.classes.join(".")}`);
-                    if (c.element.text) lines.push(`- 当前文本: "${c.element.text.slice(0, 80)}"`);
-                    lines.push(`- 位置: ${c.element.rect.x},${c.element.rect.y} (${c.element.rect.w}×${c.element.rect.h})`);
-                    lines.push(`- **修改: ${c.description}**`);
-                    lines.push("");
-                  }
-                  const prompt = lines.join("\n");
-                  setVisualPrompt(prompt);
-                  setRightTab("prompt");
-                  navigator.clipboard.writeText(prompt).catch(() => {});
-                }}
-              />
+                  justifyContent: "center",
+                  height: "100%",
+                  gap: 16,
+                  padding: 40,
+                }}>
+                  <button
+                    onClick={() => setEditorMode("canvas")}
+                    style={{
+                      position: "absolute", left: 16, top: 16,
+                      padding: "6px 14px", borderRadius: 8, border: "none",
+                      background: "#4f46e5", color: "white", fontSize: 12,
+                      fontWeight: 600, cursor: "pointer",
+                    }}
+                  >
+                    ← 返回画布
+                  </button>
+                  <div style={{ fontSize: 48 }}>🔍</div>
+                  <div style={{ fontSize: 18, fontWeight: 600, color: "#333" }}>输入要检查的页面 URL</div>
+                  <div style={{ fontSize: 13, color: "#888", textAlign: "center", maxWidth: 400, lineHeight: 1.6 }}>
+                    支持 localhost 开发服务器（推荐）和允许 iframe 嵌入的站点
+                  </div>
+                  <div style={{ display: "flex", gap: 8, width: "100%", maxWidth: 500 }}>
+                    <input
+                      value={visualUrl}
+                      onChange={(e) => setVisualUrl(e.target.value)}
+                      placeholder="http://localhost:3000"
+                      style={{
+                        flex: 1, padding: "12px 16px", borderRadius: 10,
+                        border: "1px solid #ddd", fontSize: 14, outline: "none",
+                      }}
+                      onKeyDown={(e) => e.key === 'Enter' && visualUrl.trim() && setVisualUrl(visualUrl.trim())}
+                    />
+                    <button
+                      onClick={() => visualUrl.trim() && setVisualUrl(visualUrl.trim())}
+                      disabled={!visualUrl.trim()}
+                      style={{
+                        padding: "12px 24px", borderRadius: 10, border: "none",
+                        background: visualUrl.trim() ? "#4f46e5" : "#e5e5e5",
+                        color: visualUrl.trim() ? "white" : "#999",
+                        fontSize: 14, fontWeight: 600,
+                        cursor: visualUrl.trim() ? "pointer" : "default",
+                      }}
+                    >
+                      加载
+                    </button>
+                  </div>
+                  {/* Quick presets */}
+                  <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+                    {[
+                      { label: "Furriq (localhost:3000)", url: "http://localhost:3000" },
+                      { label: "GridPaw (localhost:4321)", url: "http://localhost:4321" },
+                    ].map((preset) => (
+                      <button
+                        key={preset.url}
+                        onClick={() => setVisualUrl(preset.url)}
+                        style={{
+                          padding: "6px 14px", borderRadius: 8,
+                          border: "1px solid #ddd", background: "white",
+                          fontSize: 12, cursor: "pointer", color: "#555",
+                        }}
+                      >
+                        ⚡ {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
           <div
@@ -3665,45 +3688,6 @@ export default function Page() {
                   onGroup={groupSelected}
                   onUngroup={ungroupSelected}
                 />
-              ) : visualPrompt ? (
-                <div style={{ padding: 16, height: "100%", overflowY: "auto" }}>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: p.onSurfaceVariant, marginBottom: 8 }}>
-                    可视化编辑 Prompt
-                  </div>
-                  <pre style={{
-                    fontSize: 11,
-                    lineHeight: 1.6,
-                    color: p.onSurface,
-                    whiteSpace: "pre-wrap",
-                    wordBreak: "break-word",
-                    fontFamily: "ui-monospace, monospace",
-                    background: p.surfaceContainerLow,
-                    padding: 12,
-                    borderRadius: 8,
-                    border: `1px solid ${p.outlineVariant}`,
-                    maxHeight: "calc(100% - 80px)",
-                    overflowY: "auto",
-                  }}>
-                    {visualPrompt}
-                  </pre>
-                  <button
-                    onClick={() => { navigator.clipboard.writeText(visualPrompt).catch(() => {}); }}
-                    className="m3-press"
-                    style={{
-                      marginTop: 8,
-                      padding: "6px 16px",
-                      borderRadius: 20,
-                      border: "none",
-                      background: p.primary,
-                      color: p.onPrimary,
-                      fontSize: 12,
-                      fontWeight: 600,
-                      cursor: "pointer",
-                    }}
-                  >
-                    复制到剪贴板
-                  </button>
-                </div>
               ) : (
                 <PromptPanel
                   doc={doc}
