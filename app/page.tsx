@@ -2781,7 +2781,7 @@ export default function Page() {
         )}
 
         {/* ---- left: rail + parts / layers ---- */}
-        {!isMobile && (
+        {!isMobile && editorMode !== "visual" && (
           <aside style={{ ...panelStyle, width: leftOpen ? leftW : RAIL_W, flexDirection: "row", transition: "width 200ms cubic-bezier(0.2, 0, 0, 1)" }}>
             <div
               onPointerEnter={() => setRailHover(true)}
@@ -3409,6 +3409,7 @@ export default function Page() {
           </div>
           )}
 
+          {editorMode !== "visual" && (
           <Toolbar
             p={p}
             mode={mode}
@@ -3443,6 +3444,7 @@ export default function Page() {
               } catch {}
             }}
           />
+          )}
 
           {isMobile && (
             <div
