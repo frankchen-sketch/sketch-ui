@@ -1,7 +1,7 @@
 {
   "name": "sketch-ui",
   "version": "0.1.0",
-  "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
+  "description": "Visual page inspector — hover, select, generate AI prompts",
   "private": true,
   "engines": {
     "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
@@ -9,31 +9,23 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
-    "typecheck": "tsc --noEmit -p .",
-    "test": "vitest run"
+    "typecheck": "tsc --noEmit -p ."
   },
   "dependencies": {
-    "html-to-image": "^1.11.13",
-    "motion": "^13.1.1",
     "next": "16.3.4",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^26",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "jsdom": "^30.0.1",
-    "tailwindcss": "^4",
-    "typescript": "^7",
-    "vitest": "^5.0.0"
+    "typescript": "^7"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lnkiai/m3e-canvas.git"
+    "url": "https://github.com/frankchen-sketch/sketch-ui.git"
   },
-  "homepage": "https://lnkiai.github.io/m3e-canvas/"
+  "homepage": "https://sketch-ui.pages.dev"
 }
