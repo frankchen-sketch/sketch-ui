@@ -140,8 +140,8 @@ export function InspectorPanel({
               <textarea
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
-                placeholder="描述要做的修改..."
-                rows={2}
+                placeholder={"描述修改，例如：\n• 把标题改成 \"AI Cat Breed Finder\"\n• 删除这个元素\n• 颜色改成 #8a4b18"}
+                rows={3}
                 style={{
                   width: "100%",
                   padding: "6px 8px",

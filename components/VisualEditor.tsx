@@ -253,23 +253,90 @@ export function VisualEditor({ pageUrl, onBack }: VisualEditorProps) {
   const generatePrompt = () => {
     if (changes.length === 0) return;
     const lines: string[] = [];
+
+    // Header
     lines.push(`# 修改请求`);
     lines.push("");
-    if (pageUrl) lines.push(`**页面:** ${pageUrl}`);
+    if (pageUrl) {
+      lines.push(`**页面:** ${pageUrl}`);
+      // Extract domain for context
+      try {
+        const hostname = new URL(pageUrl).hostname.replace("www.", "");
+        lines.push(`**站点:** ${hostname}`);
+      } catch {}
+    }
     lines.push(`**修改数量:** ${changes.length}`);
     lines.push("");
-    for (let i = 0; i < changes.length; i++) {
-      const c = changes[i];
-      lines.push(`### 修改 ${i + 1}`);
-      lines.push(`- **CSS 选择器:** \`${c.element.selector}\``);
-      if (c.element.text) lines.push(`- **当前内容:** "${c.element.text.slice(0, 80)}"`);
-      if (c.element.styles.length > 0) {
-        lines.push(`- **当前样式:** ${c.element.styles.slice(0, 5).map(s => `${s.prop}: ${s.value}`).join(', ')}`);
-      }
-      lines.push(`- **修改:** ${c.description}`);
+
+    // Infer page context from elements
+    const headings = changes.filter(c => c.element.tag.match(/^h[1-3]$/));
+    if (headings.length > 0) {
+      lines.push(`**页面区域:** 围绕 "${headings[0].element.text?.slice(0, 40)}" 的区域`);
       lines.push("");
     }
-    lines.push(`请逐个修改以上元素，保持页面整体风格一致。`);
+
+    // Each change
+    for (let i = 0; i < changes.length; i++) {
+      const c = changes[i];
+      const el = c.element;
+      const tag = el.tag;
+      const desc = c.description;
+
+      // Infer operation type from description
+      let operation = "修改";
+      if (/删|去|移除|remove|delete|hide/i.test(desc)) operation = "删除";
+      else if (/改|换|change|replace|update/i.test(desc)) operation = "修改";
+      else if (/加|添|add|insert/i.test(desc)) operation = "新增";
+      else if (/缩|短|shorten|trim/i.test(desc)) operation = "修改内容";
+
+      lines.push(`### 修改 ${i + 1}: ${operation} ${tag} 元素`);
+      lines.push("");
+
+      // Element identification
+      lines.push(`- **元素:** \`<${tag}>\``);
+      lines.push(`- **CSS 选择器:** \`${el.selector}\``);
+      if (el.id) lines.push(`- **ID:** #${el.id}`);
+      if (el.classes.length > 0) lines.push(`- **类名:** .${el.classes.join(".")}`);
+
+      // Current content
+      if (el.text) {
+        lines.push(`- **当前内容:** "${el.text.slice(0, 100)}"`);
+      }
+
+      // Current styles (only meaningful ones)
+      const keyStyles = el.styles.filter(s =>
+        ["color", "backgroundColor", "fontSize", "fontWeight", "display", "padding", "margin", "borderRadius"].includes(s.prop)
+      );
+      if (keyStyles.length > 0) {
+        lines.push(`- **当前样式:** ${keyStyles.slice(0, 5).map(s => `${s.prop}: ${s.value}`).join(", ")}`);
+      }
+
+      // Position context
+      lines.push(`- **位置:** (${el.rect.x}, ${el.rect.y}) ${el.rect.w}×${el.rect.h}px`);
+      if (el.parentTag) {
+        lines.push(`- **父元素:** <${el.parentTag}>${el.parentClasses.length ? ` .${el.parentClasses.slice(0, 2).join(".")}` : ""}`);
+      }
+
+      // Change description
+      lines.push(`- **操作:** ${desc}`);
+
+      // Add implementation hint based on operation
+      if (operation === "删除") {
+        lines.push(`- **提示:** 移除整个元素及其子元素，不要留空占位`);
+      } else if (operation === "修改内容") {
+        lines.push(`- **提示:** 只修改文本内容，保持所有样式和结构不变`);
+      } else if (operation === "修改") {
+        lines.push(`- **提示:** 修改后确保与周围元素风格一致`);
+      }
+
+      lines.push("");
+    }
+
+    // Footer
+    lines.push(`---`);
+    lines.push("");
+    lines.push(`请逐个修改以上元素。修改前先定位到对应的源码文件，修改后确保页面整体风格一致。`);
+
     const result = lines.join("\n");
     setPrompt(result);
     navigator.clipboard.writeText(result).then(() => {
